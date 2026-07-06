@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Boldfinger';
+    src: url('./public/Fonts/Boldfinger.ttf') format('truetype');
+    font-weight: 100 1000;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'DG Ghayaty';
+    src: url('./public/Fonts/dg-ghayaty-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  body {
+    @apply bg-brand-beige text-brand-charcoal font-sans antialiased overflow-x-hidden;
+  }
+
+  .desktop-cursor-none,
+  .desktop-cursor-none * {
+    cursor: none !important;
+  }
+}
+
+@layer utilities {
+  .text-outline {
+    -webkit-text-stroke: 2px #E9171F;
+    color: transparent;
+  }
+
+  @keyframes marquee {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+  }
+
+  @keyframes marqueeReverse {
+    0% { transform: translate3d(-50%, 0, 0); }
+    100% { transform: translate3d(0, 0, 0); }
+  }
+
+  @keyframes spinSlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .animate-marquee {
+    animation: marquee 25s linear infinite !important;
+    will-change: transform;
+  }
+
+  .animate-marqueeReverse {
+    animation: marqueeReverse 25s linear infinite !important;
+    will-change: transform;
+  }
+
+  .animate-spinSlow {
+    animation: spinSlow 15s linear infinite !important;
+  }
+}
