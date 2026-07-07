@@ -1,0 +1,148 @@
+/* Carousel.css */
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-track {
+  display: flex;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.carousel-item {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Changed from space-between to center to decrease spacing */
+  gap: 10px; /* Reduced gap between badge, image and text content */
+  border: 1px solid rgba(26, 26, 26, 0.05);
+  border-radius: 28px;
+  background-color: #FCFAF6;
+  box-shadow: 
+    0 15px 35px -5px rgba(26, 26, 26, 0.06),
+    0 5px 15px -5px rgba(26, 26, 26, 0.02);
+  overflow: hidden;
+  cursor: grab;
+  padding: 16px 14px; /* Reduced padding to decrease vertical space */
+  transform-style: preserve-3d;
+  background: linear-gradient(135deg, #FCFAF6 0%, #F5F2EB 100%);
+  height: clamp(320px, 46vh, 440px);
+  transition: box-shadow 0.3s ease;
+}
+
+.carousel-item:active {
+  cursor: grabbing;
+}
+
+.carousel-item-image-wrapper {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  min-height: 120px;
+  max-height: 200px;
+  margin: 2px 0; /* Reduced image margin to decrease spacing */
+}
+
+.carousel-item-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.carousel-item-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: center;
+  margin-top: auto;
+  gap: 4px; /* Tighter spacing between name, desc, and price */
+}
+
+.carousel-item-badge {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 10px; /* Increased from 8px */
+  letter-spacing: 0.15em;
+  color: #FFFFFF;
+  background-color: #E9171F;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+}
+
+.carousel-item-title {
+  font-family: 'Boldfinger', sans-serif;
+  font-size: 24px; /* Increased from 20px */
+  color: #1A1A1A;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.carousel-item-description {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 11px; /* Increased from 9px */
+  color: #555555;
+  line-height: 1.35;
+  margin: 0;
+  text-transform: uppercase;
+  max-width: 95%;
+}
+
+.carousel-item-price {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 13px; /* Increased from 11px */
+  color: #E9171F;
+  margin-top: 2px;
+}
+
+.carousel-indicators-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 10px; /* Reduced from 14px */
+  z-index: 10;
+}
+
+.carousel-indicators {
+  display: flex;
+  gap: 6px;
+}
+
+.carousel-indicator {
+  height: 6px;
+  border: none;
+  padding: 0;
+  appearance: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.carousel-indicator.active {
+  width: 24px;
+  background-color: #E9171F;
+}
+
+.carousel-indicator.inactive {
+  width: 6px;
+  background-color: rgba(26, 26, 26, 0.2);
+}

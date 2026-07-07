@@ -7,46 +7,46 @@ export default function Footer() {
   }
 
   return (
-    <footer className="w-full bg-brand-charcoal text-brand-beige py-16 px-6 md:px-12 border-t border-brand-beige/5 select-none relative overflow-hidden">
+    <footer className="w-full bg-brand-red text-brand-beige py-16 px-6 md:px-12 border-t border-white/10 select-none relative overflow-hidden">
       {/* Decorative large brand letters */}
-      <div className="absolute left-1/2 bottom-[-20px] -translate-x-1/2 text-brand-beige/[0.02] text-[15vw] font-ghayaty font-extrabold tracking-tighter leading-none w-full text-center pointer-events-none select-none">
+      <div className="absolute left-1/2 bottom-[-20px] -translate-x-1/2 text-white/[0.04] text-[15vw] font-ghayaty font-extrabold tracking-tighter leading-none w-full text-center pointer-events-none select-none">
         BOBSMOMO
       </div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10 text-left">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10 text-center md:text-left">
         {/* Column 1: Info and logo */}
         <div className="space-y-4 md:col-span-2">
-          <h3 className="text-3xl font-ghayaty font-extrabold tracking-tighter uppercase">
-            BOB'S <span className="text-brand-red">MOMO</span>
+          <h3 className="text-3xl font-ghayaty font-extrabold tracking-tighter uppercase text-white">
+            BOB'S <span className="text-brand-yellow">MOMO</span>
           </h3>
-          <p className="text-sm text-brand-beige/60 max-w-sm leading-relaxed font-sans">
-            Smashed beef patties, premium ingredients, crispy edges, caramelized onions. The best burger experience in Geneva, Switzerland.
+          <p className="text-sm text-white/80 max-w-sm leading-relaxed font-sans font-medium">
+            We steam, fry, and smash the finest momos in Bhubaneswar, delivering a juicy burst of taste with every single bite.
           </p>
         </div>
 
         {/* Column 2: Quick Links */}
         <div className="space-y-4">
-          <h4 className="text-[10px] font-mono tracking-widest text-brand-beige/40 uppercase block">
+          <h4 className="text-[10px] font-mono tracking-widest text-white/50 uppercase block font-bold">
             Navigation
           </h4>
           <ul className="space-y-2 text-sm font-semibold uppercase tracking-wider">
             <li>
-              <a href="#about" className="hover:text-brand-red transition-colors duration-200" data-cursor="pointer">
+              <a href="#about" className="hover:text-brand-yellow transition-colors duration-200" data-cursor="pointer">
                 About Us
               </a>
             </li>
             <li>
-              <a href="#menu" className="hover:text-brand-red transition-colors duration-200" data-cursor="pointer">
+              <a href="#menu" className="hover:text-brand-yellow transition-colors duration-200" data-cursor="pointer">
                 Our Menu
               </a>
             </li>
             <li>
-              <a href="#locations" className="hover:text-brand-red transition-colors duration-200" data-cursor="pointer">
+              <a href="#locations" className="hover:text-brand-yellow transition-colors duration-200" data-cursor="pointer">
                 Locations
               </a>
             </li>
             <li>
-              <a href="#careers" className="hover:text-brand-red transition-colors duration-200" data-cursor="pointer">
+              <a href="#careers" className="hover:text-brand-yellow transition-colors duration-200" data-cursor="pointer">
                 Careers
               </a>
             </li>
@@ -55,23 +55,23 @@ export default function Footer() {
 
         {/* Column 3: Social/Legal */}
         <div className="space-y-4">
-          <h4 className="text-[10px] font-mono tracking-widest text-brand-beige/40 uppercase block">
+          <h4 className="text-[10px] font-mono tracking-widest text-white/50 uppercase block font-bold">
             Connect
           </h4>
           <ul className="space-y-2 text-sm font-semibold uppercase tracking-wider">
             <li>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-red transition-colors duration-200" data-cursor="pointer">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-yellow transition-colors duration-200" data-cursor="pointer">
                 Instagram
               </a>
             </li>
             <li>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-red transition-colors duration-200" data-cursor="pointer">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-yellow transition-colors duration-200" data-cursor="pointer">
                 Facebook
               </a>
             </li>
             <li>
-              <a href="mailto:hello@prettypatty.ch" className="hover:text-brand-red transition-colors duration-200" data-cursor="pointer">
-                hello@prettypatty.ch
+              <a href="mailto:bobsmomo@gmail.com" className="hover:text-brand-yellow transition-colors duration-200 lowercase" data-cursor="pointer">
+                bobsmomo@gmail.com
               </a>
             </li>
           </ul>
@@ -79,20 +79,20 @@ export default function Footer() {
       </div>
 
       {/* Bottom Footer Credits */}
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center mt-16 pt-8 border-t border-brand-beige/10 relative z-10 text-xs font-mono text-brand-beige/40 space-y-4 sm:space-y-0">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center mt-16 pt-8 border-t border-white/10 relative z-10 text-xs font-mono text-white/50 space-y-4 sm:space-y-0">
         <div>
-          © BOB'S MOMO 2026 // EST. GENEVA // ALL RIGHTS RESERVED
+          © BOB'S MOMO 2026 // EST. BHUBANESWAR // ALL RIGHTS RESERVED
         </div>
 
         {/* Scroll back up button */}
         <button
           onClick={scrollToTop}
-          className="flex items-center space-x-2 text-brand-beige/60 hover:text-brand-red transition-colors duration-200"
+          className="flex items-center space-x-2 text-white/70 hover:text-brand-yellow transition-colors duration-200"
           data-cursor="pointer"
           aria-label="Scroll to top"
         >
           <span>Back to top</span>
-          <div className="p-2 border border-brand-beige/15 rounded-full">
+          <div className="p-2 border border-white/20 rounded-full">
             <ArrowUp size={12} />
           </div>
         </button>

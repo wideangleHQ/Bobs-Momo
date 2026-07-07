@@ -1,4 +1,5 @@
-import React from "react"
+//burgercard.tsx
+// import React from "react"
 import { Plus } from "lucide-react"
 
 interface BurgerCardProps {

@@ -145,7 +145,7 @@ export default function FeedbackSection() {
     <section
       id="feedback"
       ref={sectionRef}
-      className="w-full min-h-[110vh] md:min-h-screen bg-white flex items-center justify-center py-20 px-6 md:px-12 relative overflow-hidden"
+      className="w-full min-h-[110vh] md:min-h-screen bg-brand-beige flex items-center justify-center py-20 px-6 md:px-12 relative overflow-hidden"
     >
       {/* Subtle Background Texture */}
       <div
@@ -189,7 +189,7 @@ export default function FeedbackSection() {
             
             {/* Heading */}
             <div className="feedback-stagger-item text-left">
-              <h2 className="font-display font-black text-2xl md:text-4xl lg:text-5xl text-white uppercase tracking-tight leading-none">
+              <h2 className="font-display font-black text-5xl md:text-4xl lg:text-5xl text-white uppercase tracking-tight leading-none">
                 RATE YOUR EXPERIENCE
               </h2>
             </div>
@@ -375,10 +375,10 @@ export default function FeedbackSection() {
             </div>
 
             {/* Row 4: Submit Button (Centered/Right-aligned pill) */}
-            <div className="feedback-stagger-item flex justify-end pt-0">
+            <div className="feedback-stagger-item flex md:justify-end justify-center pt-0">
               <button
                 type="submit"
-                className="px-14 py-3 bg-white text-brand-charcoal hover:bg-brand-yellow hover:text-brand-charcoal font-display font-black text-xs md:text-sm uppercase tracking-widest rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 active:translate-y-0 active:scale-95"
+                className="w-full md:w-auto px-14 py-3 bg-white text-brand-charcoal hover:bg-brand-yellow hover:text-brand-charcoal font-display font-black text-xs md:text-sm uppercase tracking-widest rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 active:translate-y-0 active:scale-95"
                 data-cursor="pointer"
               >
                 SUBMIT

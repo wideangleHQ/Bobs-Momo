@@ -28,9 +28,7 @@ const LOCATIONS = [
     ],
     image: "./public/Images/stores/Bobs-Momo 1.webp",
     logo: "./public/Images/logo/logo.png",
-    mapLink: "https://www.google.com/maps/place/Bob's+MoMo/@20.3661791,85.7918502,17z/data=!3m1!4b1!4m6!3m5!1s0x3a1909427fb9d50d:0x26ac871e9590c488!8m2!3d20.3661741!4d85.7944251!16s%2Fg%2F11y4nwlr9c?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D",
-    hasWhatsApp: true,
-    whatsappUrl: "https://wa.me/41783415758"
+    mapLink: "https://www.google.com/maps/place/Bob's+MoMo/@20.3661791,85.7918502,17z/data=!3m1!4b1!4m6!3m5!1s0x3a1909427fb9d50d:0x26ac871e9590c488!8m2!3d20.3661741!4d85.7944251!16s%2Fg%2F11y4nwlr9c?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D"
   }
 ]
 

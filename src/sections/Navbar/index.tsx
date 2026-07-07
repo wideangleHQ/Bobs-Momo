@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Menu as MenuIcon, X, Bike } from "lucide-react"
+import { Menu as MenuIcon, X, Tag } from "lucide-react"
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -17,9 +17,21 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [isMobileMenuOpen])
+
   const navLinks = [
-    { label: "About Us", href: "#about" },
     { label: "Menu", href: "#menu" },
+    { label: "Games", href: "#games" },
     { label: "Locations", href: "#locations" },
   ]
 
@@ -37,19 +49,19 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-brand-beige/95 border-b border-brand-charcoal/10 py-3 shadow-sm backdrop-blur-md"
-            : "bg-transparent py-5"
+            ? "bg-brand-beige/95 border-b border-brand-charcoal/10 py-3 md:py-1 shadow-sm backdrop-blur-md"
+            : "bg-transparent py-5 md:py-2"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
           {/* Left Navigation links (hidden on mobile) */}
-          <div className="hidden md:flex items-center space-x-10">
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-10">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
-                className="text-base md:text-xl font-display font-black tracking-tight uppercase text-brand-charcoal hover:text-brand-red transition-colors duration-200"
+                className="text-sm md:text-base lg:text-xl font-display font-black tracking-tight uppercase text-brand-charcoal hover:text-brand-red transition-colors duration-200"
                 data-cursor="pointer"
               >
                 {link.label}
@@ -57,49 +69,35 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Logo (Centered, Stacked) */}
+          {/* Logo */}
           <a
             href="#"
-            className="flex flex-col items-center leading-[0.8] text-brand-red font-ghayaty tracking-tighter uppercase text-center select-none"
+            className="flex items-center justify-center select-none"
             data-cursor="pointer"
           >
-            <span className="text-2xl md:text-3xl font-medium">BOB'S</span>
-            <span className="text-2xl md:text-3xl">MOMO</span>
+            <img
+              src="/Images/logo/logo.png"
+              alt="Bob's Momo Logo"
+              className="h-14 md:h-20 w-auto object-contain"
+            />
           </a>
 
           {/* Right Actions */}
           <div className="flex items-center space-x-3">
-            {/* Language Selector (UK Flag in Circle) - Hidden on extra small screens */}
-            <button
-              className="hidden sm:flex w-12 h-12 rounded-full border border-brand-charcoal/15 bg-white items-center justify-center shadow-sm hover:border-brand-red hover:scale-105 active:scale-95 transition-all duration-200"
-              data-cursor="pointer"
-              aria-label="Language Selector"
-            >
-              <div className="w-5 h-5 rounded-full overflow-hidden flex items-center justify-center shadow-inner">
-                <svg className="w-full h-full object-cover" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="60" height="30" fill="#012169"/>
-                  <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6"/>
-                  <path d="M0,0 L30,15 M60,30 L30,15 M60,0 L30,15 M0,30 L30,15" stroke="#C8102E" strokeWidth="4"/>
-                  <path d="M30,0 L30,30 M0,15 L60,15" stroke="#fff" strokeWidth="10"/>
-                  <path d="M30,0 L30,30 M0,15 L60,15" stroke="#C8102E" strokeWidth="6"/>
-                </svg>
-              </div>
-            </button>
-
-            {/* Delivery/Bicycle Icon in Circle - Hidden on extra small screens */}
+            {/* Offers (Tag Icon in Circle) - Hidden on extra small screens */}
             <button
               className="hidden sm:flex w-12 h-12 rounded-full border border-brand-charcoal/15 bg-white items-center justify-center shadow-sm hover:border-brand-red hover:scale-105 active:scale-95 transition-all duration-200 text-brand-charcoal hover:text-brand-red"
               data-cursor="pointer"
-              aria-label="Delivery Details"
+              aria-label="Offers"
             >
-              <Bike size={20} strokeWidth={2} />
+              <Tag size={20} strokeWidth={2} />
             </button>
 
             {/* Capsule Order Button */}
             <a
               href="#menu"
               onClick={(e) => handleLinkClick(e, "#menu")}
-              className="inline-block bg-brand-red text-white px-10 py-4 text-base font-display font-extrabold tracking-wider uppercase rounded-full hover:bg-brand-red/90 hover:scale-105 active:scale-95 transition-all duration-300 shadow-md shadow-brand-red/20"
+              className="inline-block bg-brand-red text-white px-6 py-3 lg:px-10 lg:py-4 text-xs md:text-sm lg:text-base font-display font-extrabold tracking-wider uppercase rounded-full hover:bg-brand-red/90 hover:scale-105 active:scale-95 transition-all duration-300 shadow-md shadow-brand-red/20"
               data-cursor="pointer"
             >
               Contact Us
@@ -147,7 +145,7 @@ export default function Navbar() {
             Order Online
           </a>
           <div className="text-[10px] font-mono text-center text-brand-charcoal/40 uppercase tracking-widest">
-            © BOB'S MOMO 2026 // EST. GENEVA
+            © BOB'S MOMO 2026 // EST. BHUBANESWAR
           </div>
         </div>
       </div>

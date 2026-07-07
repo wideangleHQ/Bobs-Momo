@@ -2,7 +2,6 @@ import React from "react"
 import { SmoothScrolling } from "./components/SmoothScrolling"
 import { Preloader } from "./components/Preloader"
 import { CustomCursor } from "./components/CustomCursor"
-import FloatingOrderButton from "./components/FloatingOrderButton"
 import CookieBanner from "./components/CookieBanner"
 import Navbar from "./sections/Navbar"
 import Hero from "./sections/Hero"
@@ -20,7 +19,6 @@ export default function App() {
         <Preloader />
 
         {/* Floating Utilities */}
-        <FloatingOrderButton />
         <CookieBanner />
 
         {/* Page structure */}

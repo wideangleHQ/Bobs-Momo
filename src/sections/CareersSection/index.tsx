@@ -75,7 +75,7 @@ export default function CareersSection() {
     <section
       id="careers"
       ref={sectionRef}
-      className="w-full h-auto md:h-screen md:max-h-screen bg-[#F8F2E7] py-12 md:py-0 overflow-hidden relative flex flex-col justify-center items-center select-none"
+      className="w-full h-auto md:h-screen md:max-h-screen bg-brand-beige py-12 md:py-0 overflow-hidden relative flex flex-col justify-center items-center select-none"
     >
       {/* Subtle Background Texture */}
       <div
@@ -91,36 +91,36 @@ export default function CareersSection() {
       <div className="w-full max-w-[90vw] mx-auto flex flex-col items-center">
         
         {/* Top Header Row (3-column layout) */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-start mb-4 md:mb-6 relative z-10 -mt-6 md:-mt-12">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-start mb-3 lg:mb-6 relative z-10 -mt-6 lg:-mt-12">
           
           {/* Left: Heading */}
-          <div ref={headingRef} className="md:col-span-5 text-left select-none">
-            <h2 className="font-display font-black text-7xl md:text-8xl lg:text-[7vw] leading-[0.8] text-brand-red uppercase tracking-tighter">
+          <div ref={headingRef} className="lg:col-span-5 text-left select-none">
+            <h2 className="font-display font-black text-5xl sm:text-7xl lg:text-[7vw] leading-[0.8] text-brand-red uppercase tracking-tighter">
               JOIN<br />THE TEAM
             </h2>
           </div>
 
           {/* Center: Description Paragraph */}
-          <div ref={descRef} className="md:col-span-4 text-left">
-            <p className="font-mono text-base md:text-lg lg:text-xl text-brand-charcoal uppercase tracking-wider leading-relaxed font-semibold max-w-lg">
+          <div ref={descRef} className="lg:col-span-4 text-left">
+            <p className="font-mono text-[12px] sm:text-base lg:text-xl text-brand-charcoal uppercase tracking-wider leading-relaxed font-semibold max-w-lg">
               IF YOU&apos;RE INTERESTED IN JOINING OUR AMAZING TEAM AND WORKING WITH US, PLEASE REACH OUT TO{" "}
               <a
-                href="mailto:hello@prettypatty.ch"
+                href="mailto:bobsmomo@gmail.com"
                 className="text-brand-red hover:underline transition-colors duration-200"
                 data-cursor="pointer"
               >
-                HELLO@PRETTYPATTY.CH
+                BOBSMOMO@GMAIL.COM
               </a>{" "}
               ENCLOSING YOUR CV AND COVER LETTER. WE ARE SUPER EXCITED TO HEAR FROM YOU!
             </p>
           </div>
 
           {/* Right: CTA Button */}
-          <div className="md:col-span-3 flex md:justify-end">
+          <div className="lg:col-span-3 flex lg:justify-end justify-start mt-2 lg:mt-0">
             <a
               ref={btnRef}
-              href="mailto:hello@prettypatty.ch"
-              className="px-12 py-5 bg-brand-charcoal text-brand-beige hover:bg-brand-red hover:text-brand-beige font-mono text-sm md:text-base uppercase tracking-widest font-black rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 hover:scale-105 active:scale-95"
+              href="mailto:bobsmomo@gmail.com"
+              className="px-8 py-3.5 md:px-12 md:py-5 bg-brand-charcoal text-brand-beige hover:bg-brand-red hover:text-brand-beige font-mono text-xs md:text-sm lg:text-base uppercase tracking-widest font-black rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 hover:scale-105 active:scale-95"
               data-cursor="pointer"
             >
               REACH OUT TO US
@@ -132,13 +132,13 @@ export default function CareersSection() {
         {/* Bottom Section: Team Landscape Image */}
         <div
           ref={imgContainerRef}
-          className="career-image-container w-full max-h-[50vh] md:max-h-[52vh] aspect-[16/10] md:aspect-[16/9] overflow-hidden rounded-[1.8rem] border-[8px] md:border-[12px] border-white shadow-2xl relative cursor-pointer group -mt-8 md:-mt-16 z-20"
+          className="career-image-container w-full max-h-[50vh] lg:max-h-[52vh] aspect-[16/10] lg:aspect-[16/9] overflow-hidden rounded-[1.8rem] border-[8px] lg:border-[12px] border-white shadow-2xl relative cursor-pointer group mt-2.5 lg:-mt-16 z-20"
           data-cursor="pointer"
         >
           {/* Parallax Image Target */}
           <img
             ref={imgRef}
-            src="./public/images/careers/team.png"
+            src="public/images/careers/team.png"
             alt="Pretty Patty Restaurant Team Crew"
             className="career-parallax-img w-full h-[115%] object-cover absolute top-0 left-0 transition-transform duration-700 ease-out group-hover:scale-[1.03]"
             loading="lazy"

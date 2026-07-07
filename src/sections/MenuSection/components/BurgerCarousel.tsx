@@ -1,3 +1,4 @@
+//burgercarousel.tsx
 import React, { useState, useRef, useEffect } from "react"
 import gsap from "gsap"
 import { ChevronLeft, ChevronRight } from "lucide-react"
