@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import useEmblaCarousel from "embla-carousel-react"
 import ReactBitsCarousel from "./components/ReactBitsCarousel"
 import { motion } from "framer-motion"
+import { navigate, prefetchRoute } from "../../lib/router"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -111,10 +112,10 @@ function MobileMenuSlider() {
   }, [])
 
   // Refs for GSAP entrance
-  const wrapRef   = useRef<HTMLDivElement>(null)
-  const headRef   = useRef<HTMLDivElement>(null)
+  const wrapRef = useRef<HTMLDivElement>(null)
+  const headRef = useRef<HTMLDivElement>(null)
   const sliderRef = useRef<HTMLDivElement>(null)
-  const ctaRef    = useRef<HTMLDivElement>(null)
+  const ctaRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (!wrapRef.current) return
@@ -126,9 +127,9 @@ function MobileMenuSlider() {
           toggleActions: "play none none reverse",
         },
       })
-      tl.fromTo(headRef.current,   { y: 36, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6,  ease: "power3.out"   }, 0)
+      tl.fromTo(headRef.current, { y: 36, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 0)
         .fromTo(sliderRef.current, { y: 50, opacity: 0, scale: 0.97 }, { y: 0, opacity: 1, scale: 1, duration: 0.65, ease: "power3.out" }, 0.12)
-        .fromTo(ctaRef.current,    { scale: 0.88, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.6)" }, 0.24)
+        .fromTo(ctaRef.current, { scale: 0.88, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.6)" }, 0.24)
     }, wrapRef)
     return () => ctx.revert()
   }, [])
@@ -186,6 +187,8 @@ function MobileMenuSlider() {
       {/* ── CTA Button (Comfortable spacing, 85% width) ── */}
       <div ref={ctaRef} className="flex justify-center px-4 relative z-10 flex-shrink-0 mt-1 mb-2">
         <button
+          onClick={() => navigate("/menu")}
+          onMouseEnter={() => prefetchRoute("/menu")}
           className="w-[85%] py-[12px] bg-brand-red text-white hover:bg-brand-yellow hover:text-brand-charcoal font-mono text-[11px] uppercase tracking-widest font-black rounded-full transition-all duration-300 shadow-xl active:scale-95"
           data-cursor="pointer"
         >
@@ -202,7 +205,7 @@ function DesktopTabletMenu() {
   const [center, setCenter] = useState(0)
   const [animating, setAnimating] = useState(false)
   const [touchStart, setTouchStart] = useState<number | null>(null)
-  const [touchEnd, setTouchEnd]     = useState<number | null>(null)
+  const [touchEnd, setTouchEnd] = useState<number | null>(null)
   const [screenWidth, setScreenWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1200
   )
@@ -227,8 +230,8 @@ function DesktopTabletMenu() {
   const slidePrev = () => navigate(-1)
 
   const onTouchStart = (e: React.TouchEvent) => setTouchStart(e.targetTouches[0].clientX)
-  const onTouchMove  = (e: React.TouchEvent) => setTouchEnd(e.targetTouches[0].clientX)
-  const onTouchEnd   = () => {
+  const onTouchMove = (e: React.TouchEvent) => setTouchEnd(e.targetTouches[0].clientX)
+  const onTouchEnd = () => {
     if (!touchStart || !touchEnd) return
     if (touchStart - touchEnd > 50) slideNext()
     else if (touchEnd - touchStart > 50) slidePrev()
@@ -283,8 +286,8 @@ function DesktopTabletMenu() {
 
               const isTablet = screenWidth >= 768 && screenWidth < 1024
               const isCenter = offset === 0
-              const isLeft   = offset === -1
-              const isRight  = offset === 1
+              const isLeft = offset === -1
+              const isRight = offset === 1
 
               const isVisible = isTablet
                 ? (offset === 0 || offset === 1)
@@ -295,17 +298,17 @@ function DesktopTabletMenu() {
                 translateXPct = offset === 0 ? -22 : 22
               }
 
-              const scale   = isCenter ? 1.0 : 0.92
+              const scale = isCenter ? 1.0 : 0.92
               const opacity = isVisible ? 1 : 0
 
-              let cardWidth  = isCenter ? "clamp(420px, 60vw, 780px)" : "clamp(240px, 28vw, 400px)"
+              let cardWidth = isCenter ? "clamp(420px, 60vw, 780px)" : "clamp(240px, 28vw, 400px)"
               let cardHeight = isCenter ? "clamp(280px, 44vh, 480px)" : "clamp(170px, 24vh, 300px)"
-              let infoWidth  = isCenter ? "clamp(280px, 30vw, 440px)" : "clamp(180px, 20vw, 280px)"
+              let infoWidth = isCenter ? "clamp(280px, 30vw, 440px)" : "clamp(180px, 20vw, 280px)"
 
               if (isTablet) {
-                cardWidth  = "38vw"
+                cardWidth = "38vw"
                 cardHeight = "30vh"
-                infoWidth  = "38vw"
+                infoWidth = "38vw"
               }
 
               return (
@@ -321,7 +324,7 @@ function DesktopTabletMenu() {
                     cursor: !isCenter ? "pointer" : "default",
                   }}
                   onClick={() => {
-                    if (isLeft)  slidePrev()
+                    if (isLeft) slidePrev()
                     if (isRight) slideNext()
                   }}
                 >
@@ -333,11 +336,10 @@ function DesktopTabletMenu() {
                     <img
                       src={item.image}
                       alt={item.title}
-                      className={`w-full h-full object-contain pointer-events-none will-change-transform ${
-                        isCenter
+                      className={`w-full h-full object-contain pointer-events-none will-change-transform ${isCenter
                           ? "drop-shadow-[0_32px_56px_rgba(26,26,26,0.28)]"
                           : "drop-shadow-[0_16px_28px_rgba(26,26,26,0.18)]"
-                      }`}
+                        }`}
                       loading="lazy"
                       draggable={false}
                     />
@@ -345,19 +347,16 @@ function DesktopTabletMenu() {
 
                   {/* Food Info */}
                   <div className="text-center mt-2 space-y-1 px-2" style={{ width: infoWidth }}>
-                    <h3 className={`font-display font-black uppercase tracking-tight leading-tight ${
-                      isCenter ? "text-2xl md:text-3xl" : "text-lg md:text-xl"
-                    }`}>
+                    <h3 className={`font-display font-black uppercase tracking-tight leading-tight ${isCenter ? "text-2xl md:text-3xl" : "text-lg md:text-xl"
+                      }`}>
                       {item.title}
                     </h3>
-                    <p className={`font-sans leading-relaxed text-brand-charcoal/70 font-medium ${
-                      isCenter ? "text-sm md:text-base" : "text-xs md:text-sm"
-                    }`}>
+                    <p className={`font-sans leading-relaxed text-brand-charcoal/70 font-medium ${isCenter ? "text-sm md:text-base" : "text-xs md:text-sm"
+                      }`}>
                       {item.ingredients}
                     </p>
-                    <p className={`font-mono font-black text-brand-red tracking-wide ${
-                      isCenter ? "text-sm md:text-base" : "text-xs md:text-sm"
-                    }`}>
+                    <p className={`font-mono font-black text-brand-red tracking-wide ${isCenter ? "text-sm md:text-base" : "text-xs md:text-sm"
+                      }`}>
                       {item.price}
                     </p>
                   </div>
@@ -391,11 +390,10 @@ function DesktopTabletMenu() {
             <button
               key={i}
               onClick={() => !animating && setCenter(i)}
-              className={`rounded-full transition-all duration-500 ${
-                i === center
+              className={`rounded-full transition-all duration-500 ${i === center
                   ? "w-6 h-2 bg-brand-red"
                   : "w-2 h-2 bg-brand-charcoal/20 hover:bg-brand-charcoal/40"
-              }`}
+                }`}
               aria-label={`Go to item ${i + 1}`}
             />
           ))}
@@ -404,6 +402,8 @@ function DesktopTabletMenu() {
         {/* ── CTA Button ────────────────────────────────────── */}
         <div className="flex justify-center flex-shrink-0">
           <button
+            onClick={() => navigate("/menu")}
+            onMouseEnter={() => prefetchRoute("/menu")}
             className="px-10 py-5 bg-brand-red text-white hover:bg-brand-yellow hover:text-brand-charcoal font-mono text-xs uppercase tracking-widest font-black rounded-full transition-all duration-300 shadow-xl transform hover:-translate-y-1 hover:scale-105 active:scale-95"
             data-cursor="pointer"
           >

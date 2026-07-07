@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/((?!assets|Images|Fonts|Colour).*)", "destination": "/index.html" }
+  ]
+}

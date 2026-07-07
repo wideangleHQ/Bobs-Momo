@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Menu as MenuIcon, X, Tag } from "lucide-react"
+import { navigate, prefetchRoute } from "../../lib/router"
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -38,20 +39,35 @@ export default function Navbar() {
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
     setIsMobileMenuOpen(false)
-    const targetElement = document.querySelector(href)
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth" })
+
+    if (href === "#menu") {
+      navigate("/menu")
+      return
+    }
+
+    if (window.location.pathname !== "/") {
+      navigate("/")
+      setTimeout(() => {
+        const targetElement = document.querySelector(href)
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: "smooth" })
+        }
+      }, 150)
+    } else {
+      const targetElement = document.querySelector(href)
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" })
+      }
     }
   }
 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          isScrolled
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled
             ? "bg-brand-beige/95 border-b border-brand-charcoal/10 py-3 md:py-1 shadow-sm backdrop-blur-md"
             : "bg-transparent py-5 md:py-2"
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
           {/* Left Navigation links (hidden on mobile) */}
@@ -71,7 +87,15 @@ export default function Navbar() {
 
           {/* Logo */}
           <a
-            href="#"
+            href="/"
+            onClick={(e) => {
+              e.preventDefault()
+              if (window.location.pathname !== "/") {
+                navigate("/")
+              } else {
+                window.scrollTo({ top: 0, behavior: "smooth" })
+              }
+            }}
             className="flex items-center justify-center select-none"
             data-cursor="pointer"
           >
@@ -97,6 +121,7 @@ export default function Navbar() {
             <a
               href="#menu"
               onClick={(e) => handleLinkClick(e, "#menu")}
+              onMouseEnter={() => prefetchRoute("/menu")}
               className="inline-block bg-brand-red text-white px-6 py-3 lg:px-10 lg:py-4 text-xs md:text-sm lg:text-base font-display font-extrabold tracking-wider uppercase rounded-full hover:bg-brand-red/90 hover:scale-105 active:scale-95 transition-all duration-300 shadow-md shadow-brand-red/20"
               data-cursor="pointer"
             >
@@ -118,9 +143,8 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 w-full h-full bg-brand-beige z-40 transition-transform duration-500 ease-in-out md:hidden flex flex-col justify-between p-8 pt-24 ${
-          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed inset-0 w-full h-full bg-brand-beige z-40 transition-transform duration-500 ease-in-out md:hidden flex flex-col justify-between p-8 pt-24 ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         <div className="flex flex-col space-y-6">
           {navLinks.map((link) => (
@@ -139,6 +163,7 @@ export default function Navbar() {
           <a
             href="#menu"
             onClick={(e) => handleLinkClick(e, "#menu")}
+            onMouseEnter={() => prefetchRoute("/menu")}
             className="block text-center bg-brand-red text-white w-full py-4 text-sm font-display font-black tracking-widest uppercase rounded-full hover:bg-brand-red/90 transition-colors duration-300"
             data-cursor="pointer"
           >

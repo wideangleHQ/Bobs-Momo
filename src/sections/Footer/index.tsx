@@ -1,9 +1,33 @@
 import React from "react"
 import { ArrowUp } from "lucide-react"
+import { navigate } from "../../lib/router"
 
 export default function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" })
+  }
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault()
+    if (href === "#menu") {
+      navigate("/menu")
+      return
+    }
+
+    if (window.location.pathname !== "/") {
+      navigate("/")
+      setTimeout(() => {
+        const targetElement = document.querySelector(href)
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: "smooth" })
+        }
+      }, 150)
+    } else {
+      const targetElement = document.querySelector(href)
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" })
+      }
+    }
   }
 
   return (
@@ -31,22 +55,22 @@ export default function Footer() {
           </h4>
           <ul className="space-y-2 text-sm font-semibold uppercase tracking-wider">
             <li>
-              <a href="#about" className="hover:text-brand-yellow transition-colors duration-200" data-cursor="pointer">
+              <a href="#about" onClick={(e) => handleLinkClick(e, "#about")} className="hover:text-brand-yellow transition-colors duration-200" data-cursor="pointer">
                 About Us
               </a>
             </li>
             <li>
-              <a href="#menu" className="hover:text-brand-yellow transition-colors duration-200" data-cursor="pointer">
+              <a href="#menu" onClick={(e) => handleLinkClick(e, "#menu")} className="hover:text-brand-yellow transition-colors duration-200" data-cursor="pointer">
                 Our Menu
               </a>
             </li>
             <li>
-              <a href="#locations" className="hover:text-brand-yellow transition-colors duration-200" data-cursor="pointer">
+              <a href="#locations" onClick={(e) => handleLinkClick(e, "#locations")} className="hover:text-brand-yellow transition-colors duration-200" data-cursor="pointer">
                 Locations
               </a>
             </li>
             <li>
-              <a href="#careers" className="hover:text-brand-yellow transition-colors duration-200" data-cursor="pointer">
+              <a href="#careers" onClick={(e) => handleLinkClick(e, "#careers")} className="hover:text-brand-yellow transition-colors duration-200" data-cursor="pointer">
                 Careers
               </a>
             </li>

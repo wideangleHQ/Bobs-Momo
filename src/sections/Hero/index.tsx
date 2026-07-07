@@ -192,6 +192,9 @@ export default function Hero() {
           alt="Bob's Momo Platter"
           className="w-full h-full object-cover select-none pointer-events-none brightness-[1.04] contrast-[1.04] saturate-[1.06]"
           style={{ willChange: "transform" }}
+          loading="eager"
+          // @ts-ignore
+          fetchpriority="high"
         />
       </div>
 
