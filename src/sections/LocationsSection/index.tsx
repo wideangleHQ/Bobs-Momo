@@ -285,7 +285,7 @@ export default function LocationsSection() {
                       <div className="w-14 h-14 md:w-16 md:h-16 flex-shrink-0 bg-brand-red rounded-2xl overflow-hidden border border-brand-charcoal/15 flex items-center justify-center p-1.5">
                         <img
                           src={loc.logo}
-                          alt="Pretty Patty Logo"
+                          alt="Bob's Momo Logo"
                           className="w-full h-full object-contain"
                         />
                       </div>

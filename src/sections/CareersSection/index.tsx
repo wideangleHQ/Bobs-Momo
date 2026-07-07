@@ -139,7 +139,7 @@ export default function CareersSection() {
           <img
             ref={imgRef}
             src="public/images/careers/team.png"
-            alt="Pretty Patty Restaurant Team Crew"
+            alt="Bob's Momo Restaurant Team Crew"
             className="career-parallax-img w-full h-[115%] object-cover absolute top-0 left-0 transition-transform duration-700 ease-out group-hover:scale-[1.03]"
             loading="lazy"
           />

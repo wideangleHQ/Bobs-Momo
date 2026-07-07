@@ -189,7 +189,7 @@ export default function Hero() {
       >
         <img
           src="/Images/Hero Section Background.png"
-          alt="Pretty Patty Smashburger Meal Tray"
+          alt="Bob's Momo Platter"
           className="w-full h-full object-cover select-none pointer-events-none brightness-[1.04] contrast-[1.04] saturate-[1.06]"
           style={{ willChange: "transform" }}
         />
