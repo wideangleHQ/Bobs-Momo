@@ -15,8 +15,8 @@ const LOCATIONS = [
     hours: [
       "Mon - Sun : 4:00 - 10:00 Pm"
     ],
-    image: "./public/Images/stores/store-2.jpeg",
-    logo: "./public/Images/logo/logo.png",
+    image: "/Images/stores/store-2.jpeg",
+    logo: "/Images/logo/logo.png",
     mapLink: "https://www.google.com/maps/place/Bob's+MoMo/@20.2861003,85.7706262,17z/data=!3m1!4b1!4m6!3m5!1s0x3a19091144b3e8b1:0xbd56ce38525ec012!8m2!3d20.2860953!4d85.7732011!16s%2Fg%2F11n3xg37tg?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D"
   },
   {
@@ -26,8 +26,8 @@ const LOCATIONS = [
     hours: [
       "Mon - Sun : 4:00 - 10:00 Pm"
     ],
-    image: "./public/Images/stores/Bobs-Momo 1.webp",
-    logo: "./public/Images/logo/logo.png",
+    image: "/Images/stores/Bobs-Momo 1.webp",
+    logo: "/Images/logo/logo.png",
     mapLink: "https://www.google.com/maps/place/Bob's+MoMo/@20.3661791,85.7918502,17z/data=!3m1!4b1!4m6!3m5!1s0x3a1909427fb9d50d:0x26ac871e9590c488!8m2!3d20.3661741!4d85.7944251!16s%2Fg%2F11y4nwlr9c?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D"
   }
 ]

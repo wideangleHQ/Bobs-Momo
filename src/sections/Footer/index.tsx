@@ -13,9 +13,9 @@ export default function Footer() {
         BOBSMOMO
       </div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10 text-center md:text-left">
+      <div className="max-w-7xl mx-auto grid grid-cols-4 gap-8 md:gap-12 relative z-10 text-left">
         {/* Column 1: Info and logo */}
-        <div className="space-y-4 md:col-span-2">
+        <div className="space-y-4 col-span-4 md:col-span-2">
           <h3 className="text-3xl font-ghayaty font-extrabold tracking-tighter uppercase text-white">
             BOB'S <span className="text-brand-yellow">MOMO</span>
           </h3>
@@ -25,7 +25,7 @@ export default function Footer() {
         </div>
 
         {/* Column 2: Quick Links */}
-        <div className="space-y-4">
+        <div className="space-y-4 col-span-2 md:col-span-1">
           <h4 className="text-[10px] font-mono tracking-widest text-white/50 uppercase block font-bold">
             Navigation
           </h4>
@@ -54,24 +54,24 @@ export default function Footer() {
         </div>
 
         {/* Column 3: Social/Legal */}
-        <div className="space-y-4">
+        <div className="space-y-4 col-span-2 md:col-span-1">
           <h4 className="text-[10px] font-mono tracking-widest text-white/50 uppercase block font-bold">
             Connect
           </h4>
           <ul className="space-y-2 text-sm font-semibold uppercase tracking-wider">
             <li>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-yellow transition-colors duration-200" data-cursor="pointer">
+              <a href="https://www.instagram.com/bobsmomo.qsr/?hl=en" target="_blank" rel="noopener noreferrer" className="hover:text-brand-yellow transition-colors duration-200" data-cursor="pointer">
                 Instagram
               </a>
             </li>
             <li>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-yellow transition-colors duration-200" data-cursor="pointer">
+              <a href="https://www.facebook.com/people/Bobs-MoMo/61576971560742/#" target="_blank" rel="noopener noreferrer" className="hover:text-brand-yellow transition-colors duration-200" data-cursor="pointer">
                 Facebook
               </a>
             </li>
             <li>
-              <a href="mailto:bobsmomo@gmail.com" className="hover:text-brand-yellow transition-colors duration-200 lowercase" data-cursor="pointer">
-                bobsmomo@gmail.com
+              <a href="mailto:bobsmomobbsr@gmail.com" className="hover:text-brand-yellow transition-colors duration-200 lowercase" data-cursor="pointer">
+                bobsmomobbsr@gmail.com
               </a>
             </li>
           </ul>
@@ -79,7 +79,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Footer Credits */}
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center mt-16 pt-8 border-t border-white/10 relative z-10 text-xs font-mono text-white/50 space-y-4 sm:space-y-0">
+      <div className="max-w-7xl mx-auto flex flex-row justify-between items-center mt-16 pt-8 border-t border-white/10 relative z-10 text-[9px] sm:text-xs font-mono text-white/50 w-full">
         <div>
           © BOB'S MOMO 2026 // EST. BHUBANESWAR // ALL RIGHTS RESERVED
         </div>

@@ -12,27 +12,27 @@ gsap.registerPlugin(ScrollTrigger)
 // ─────────────────────────────────────────────────────────────────────────────
 const POSTS = [
   {
-    image: "/public/images/Social-Media/1.png",
-    href: "https://instagram.com/bobsmomo",
+    image: "/Images/Social-Media/1.png",
+    href: "https://www.instagram.com/reel/DUCu5JviZTH/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     caption: "Steamed to perfection 🫶",
   },
   {
-    image: "/public/images/Social-Media/2.png",
-    href: "https://instagram.com/bobsmomo",
+    image: "/Images/Social-Media/2.png",
+    href: "https://www.instagram.com/reel/DR3xJ9BCdHJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     caption: "Bob's Special is calling your name 🔥",
   },
   {
-    image: "/public/images/Social-Media/3.png",
-    href: "https://instagram.com/bobsmomo",
+    image: "/Images/Social-Media/3.png",
+    href: "https://www.instagram.com/reel/DNYSXYmxqTB/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     caption: "Stay quenched, stay happy 🥤",
   },
   {
-    image: "/public/images/Social-Media/4.png",
-    href: "https://instagram.com/bobsmomo",
+    image: "/Images/Social-Media/4.png",
+    href: "https://www.instagram.com/reel/DV0x7igExZv/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     caption: "Crispy on the outside, juicy inside 🌯",
   },
   // {
-  //   image: "/public/images/Social-Media/5.png",
+  //   image: "/images/Social-Media/5.png",
   //   href:  "https://instagram.com/bobsmomo",
   //   caption: "Warm your soul with thukpa 🍜",
   // },
@@ -430,7 +430,7 @@ export default function InstagramSection() {
         {/* ── CTA Button ── */}
         <div ref={btnRef} className="flex justify-center mt-1.5 md:mt-8 px-6 md:px-0">
           <a
-            href="https://instagram.com/bobsmomo"
+            href="https://www.instagram.com/bobsmomo.qsr/?hl=en"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-10 py-5 bg-brand-charcoal text-brand-beige hover:bg-brand-red font-mono text-[13px] md:text-xs uppercase tracking-widest font-black rounded-full transition-all duration-300 shadow-xl transform hover:-translate-y-1 hover:scale-105 active:scale-95"

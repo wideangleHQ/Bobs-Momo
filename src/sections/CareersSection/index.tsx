@@ -10,7 +10,7 @@ export default function CareersSection() {
   const descRef = useRef<HTMLDivElement>(null)
   const btnRef = useRef<HTMLAnchorElement>(null)
   const imgContainerRef = useRef<HTMLDivElement>(null)
-  const imgRef = useRef<HTMLImageElement>(null)
+  const imgRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -89,10 +89,10 @@ export default function CareersSection() {
         aria-hidden="true"
       />
       <div className="w-full max-w-[90vw] mx-auto flex flex-col items-center">
-        
+
         {/* Top Header Row (3-column layout) */}
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-start mb-3 lg:mb-6 relative z-10 -mt-6 lg:-mt-12">
-          
+
           {/* Left: Heading */}
           <div ref={headingRef} className="lg:col-span-5 text-left select-none">
             <h2 className="font-display font-black text-5xl sm:text-7xl lg:text-[7vw] leading-[0.8] text-brand-red uppercase tracking-tighter">
@@ -135,14 +135,19 @@ export default function CareersSection() {
           className="career-image-container w-full max-h-[50vh] lg:max-h-[52vh] aspect-[16/10] lg:aspect-[16/9] overflow-hidden rounded-[1.8rem] border-[8px] lg:border-[12px] border-white shadow-2xl relative cursor-pointer group mt-2.5 lg:-mt-16 z-20"
           data-cursor="pointer"
         >
-          {/* Parallax Image Target */}
-          <img
+          {/* Parallax Wrapper */}
+          <div
             ref={imgRef}
-            src="public/images/careers/team.png"
-            alt="Bob's Momo Restaurant Team Crew"
-            className="career-parallax-img w-full h-[115%] object-cover absolute top-0 left-0 transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-            loading="lazy"
-          />
+            className="w-[102%] h-[122%] absolute top-[-11%] left-[-1%] overflow-hidden"
+          >
+            {/* Parallax Image Target */}
+            <img
+              src="/Images/careers/team.png"
+              alt="Bob's Momo Restaurant Team Crew"
+              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03] block"
+              loading="lazy"
+            />
+          </div>
           {/* Dark vignette tint overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none opacity-60 transition-opacity duration-500 group-hover:opacity-40" />
         </div>

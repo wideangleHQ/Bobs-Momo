@@ -395,7 +395,8 @@ export default function AboutSection() {
           {/* Center: Description */}
           <div ref={descRef} className="md:col-span-3 text-left">
             <p className="font-mono text-[20px] md:text-m tracking-wider uppercase text-white/90 leading-relaxed font-semibold">
-              BOB&apos;S MOMO WAS BORN OUT OF A PASSION FOR AUTHENTIC HIMALAYAN FLAVORS. WE STEAM, FRY, AND SMASH THE FINEST MOMOS IN BHUBANESWAR, DELIVERING A JUICY BURST OF TASTE WITH EVERY SINGLE BITE. EST. 2026.
+              BOB&apos;S Momos started from street-side steam and bold Himalayan flavors, serving fresh, handcrafted momos that quickly became a local obsession driven by taste, warmth, and authenticity.
+
             </p>
           </div>
 

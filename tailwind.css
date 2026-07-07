@@ -5,7 +5,7 @@
 @layer base {
   @font-face {
     font-family: 'Boldfinger';
-    src: url('./public/Fonts/Boldfinger.ttf') format('truetype');
+    src: url('/Fonts/Boldfinger.ttf') format('truetype');
     font-weight: 100 1000;
     font-style: normal;
     font-display: swap;
@@ -13,7 +13,7 @@
 
   @font-face {
     font-family: 'DG Ghayaty';
-    src: url('./public/Fonts/dg-ghayaty-regular.ttf') format('truetype');
+    src: url('/Fonts/dg-ghayaty-regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;

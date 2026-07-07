@@ -28,7 +28,7 @@ const MENU_ITEMS: MenuItem[] = [
     badgeColor: "bg-brand-red text-white border-brand-red",
     ingredients: "Hand-folded dumplings stuffed with seasoned potatoes, fresh spinach, and local Swiss cheese, steamed to perfection.",
     price: "PORTION OF 6: CHF 12 / PORTION OF 12: CHF 22",
-    image: "./public/images/menu-items/Momos.png",
+    image: "/Images/menu-items/Momos.png",
   },
   {
     id: 2,
@@ -37,7 +37,7 @@ const MENU_ITEMS: MenuItem[] = [
     badgeColor: "bg-brand-yellow text-brand-charcoal border-brand-yellow",
     ingredients: "Signature momos press-smashed on a scorching griddle for a crisp outline, served with spicy sesame chutney.",
     price: "PORTION OF 6: CHF 14 / PORTION OF 12: CHF 25",
-    image: "./public/images/menu-items/Bobs-Special.png",
+    image: "/Images/menu-items/Bobs-Special.png",
   },
   {
     id: 3,
@@ -46,7 +46,7 @@ const MENU_ITEMS: MenuItem[] = [
     badgeColor: "bg-orange-500 text-white border-orange-500",
     ingredients: "Hand-pulled wheat noodles in a rich aromatically spiced broth, garnished with fresh cilantro and scallions.",
     price: "REGULAR: CHF 16.50 / LARGE: CHF 19.50",
-    image: "./public/images/menu-items/Thupka.png",
+    image: "/Images/menu-items/Thupka.png",
   },
   {
     id: 4,
@@ -55,7 +55,7 @@ const MENU_ITEMS: MenuItem[] = [
     badgeColor: "bg-green-600 text-white border-green-600",
     ingredients: "Crisp shredded vegetable rolls packed with glassed noodles and roasted spices, with sweet plum dipping sauce.",
     price: "PORTION OF 3: CHF 9 / PORTION OF 6: CHF 16",
-    image: "./public/images/menu-items/Rolls.png",
+    image: "/Images/menu-items/Rolls.png",
   },
   {
     id: 5,
@@ -64,7 +64,7 @@ const MENU_ITEMS: MenuItem[] = [
     badgeColor: "bg-blue-500 text-white border-blue-500",
     ingredients: "Refreshing yogurt drink blended with sweet mango pulp, cardamom, and infused spices, served chilled.",
     price: "GLASS: CHF 6.00 / BOTTLE: CHF 9.50",
-    image: "./public/images/menu-items/Quenched.png",
+    image: "/Images/menu-items/Quenched.png",
   },
 ]
 
@@ -166,7 +166,7 @@ function MobileMenuSlider() {
           className="font-display font-black uppercase text-brand-charcoal leading-none tracking-tight"
           style={{ fontSize: "clamp(1.75rem, 9.5vw, 2.6rem)" }}
         >
-          MOMOS
+          ITEMS
         </h2>
       </div>
 
@@ -261,7 +261,7 @@ function DesktopTabletMenu() {
             DAMN TASTY HIMALAYAN BITES
           </span>
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-black tracking-tighter text-brand-charcoal uppercase leading-none">
-            CHECK OUT OUR MOMOS
+            CHECK OUT OUR ITEMS
           </h2>
         </div>
 
