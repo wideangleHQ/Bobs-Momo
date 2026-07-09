@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useTransition, lazy, Suspense } from "react"
 import { SmoothScrolling } from "./components/SmoothScrolling"
+import { Preloader } from "./components/Preloader"
+import { useAppStore } from "./store"
 
 import { CustomCursor } from "./components/CustomCursor"
 import CookieBanner from "./components/CookieBanner"
@@ -14,6 +16,7 @@ const HomePage = lazy(() => import("./pages/HomePage"))
 import MenuPage from "./pages/MenuPage"
 
 export default function App() {
+  const isLoading = useAppStore((state) => state.isLoading)
   const [currentPath, setCurrentPath] = useState(window.location.pathname)
   const [isPending, startTransition] = useTransition()
 
@@ -40,6 +43,9 @@ export default function App() {
   return (
     <SmoothScrolling>
       <div className="relative min-h-screen bg-brand-beige overflow-hidden">
+        {/* Preloader — overlays everything on initial load */}
+        <Preloader />
+
         {/* Cinematic custom cursor */}
         <CustomCursor />
 
