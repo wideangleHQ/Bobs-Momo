@@ -232,7 +232,8 @@ export default function AboutSection() {
   const btnRef          = useRef<HTMLButtonElement>(null)
   // Mobile-specific refs
   const mobileWrapRef   = useRef<HTMLDivElement>(null)
-  const mobileTitleRef  = useRef<HTMLDivElement>(null)
+  const mobileTitle1Ref = useRef<HTMLHeadingElement>(null)
+  const mobileTitle2Ref = useRef<HTMLHeadingElement>(null)
   const mobileGalleryRef = useRef<HTMLDivElement>(null)
   const mobileDescRef   = useRef<HTMLDivElement>(null)
   const mobileBtnRef    = useRef<HTMLButtonElement>(null)
@@ -257,7 +258,7 @@ export default function AboutSection() {
           scrollTrigger: {
             trigger: container,
             start: "top top",
-            end: () => `+=${window.innerHeight * 2.5}`,
+            end: () => `+=${window.innerHeight * 1.5}`,
             pin: true,
             scrub: 1,
             anticipatePin: 1,
@@ -267,33 +268,29 @@ export default function AboutSection() {
 
         mainTl
           .fromTo(
-            [title1Ref.current, title2Ref.current],
-            { y: 60, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.25, stagger: 0.05, ease: "power3.out" },
-            0
-          )
-          .fromTo(
             descRef.current,
-            { y: 40, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" },
+            { y: 20, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.18, ease: "power3.out" },
             0.1
           )
           .fromTo(
             btnRef.current,
             { scale: 0.9, opacity: 0 },
-            { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(1.5)" },
-            0.15
-          )
-          .fromTo(
-            track,
-            { y: 80, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" },
+            { scale: 1, opacity: 1, duration: 0.15, ease: "back.out(1.5)" },
             0.2
           )
+          // ── Gallery reveals AFTER headings complete ────────────────────────
+          .fromTo(
+            track,
+            { y: 40, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.25, ease: "power3.out" },
+            0.3
+          )
+          // ── Horizontal scroll begins once gallery is visible ───────────────
           .to(
             track,
             { x: getScrollAmount, ease: "none" },
-            0.35
+            0.45
           )
 
         const cards = track.querySelectorAll(".gallery-card")
@@ -310,7 +307,7 @@ export default function AboutSection() {
                 scrollTrigger: {
                   trigger: container,
                   start: "top top",
-                  end: () => `+=${window.innerHeight * 2.5}`,
+                  end: () => `+=${window.innerHeight * 1.5}`,
                   scrub: 1,
                 },
               }
@@ -332,12 +329,6 @@ export default function AboutSection() {
         })
 
         tl.fromTo(
-          mobileTitleRef.current,
-          { y: 40, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.65, ease: "power3.out" },
-          0
-        )
-        .fromTo(
           mobileGalleryRef.current,
           { y: 50, opacity: 0, scale: 0.97 },
           { y: 0, opacity: 1, scale: 1, duration: 0.7, ease: "power3.out" },
@@ -448,11 +439,11 @@ export default function AboutSection() {
         style={{ height: "90vh", minHeight: "90vh" }}
       >
         {/* ── Heading ── */}
-        <div ref={mobileTitleRef} className="mb-4 px-6">
-          <h2 className="font-display font-black text-[clamp(3.2rem,16vw,5rem)] leading-[0.85] text-brand-yellow uppercase tracking-tighter">
+        <div className="mb-4 px-6">
+          <h2 ref={mobileTitle1Ref} className="font-display font-black text-[clamp(3.2rem,16vw,5rem)] leading-[0.85] text-brand-yellow uppercase tracking-tighter">
             ABOUT
           </h2>
-          <h2 className="font-display font-black text-[clamp(3.2rem,16vw,5rem)] leading-[0.85] text-brand-yellow uppercase tracking-tighter mt-1">
+          <h2 ref={mobileTitle2Ref} className="font-display font-black text-[clamp(3.2rem,16vw,5rem)] leading-[0.85] text-brand-yellow uppercase tracking-tighter mt-1">
             BOB&apos;S MOMO
           </h2>
         </div>

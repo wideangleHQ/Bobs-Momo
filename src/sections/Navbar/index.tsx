@@ -77,7 +77,7 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
-                className="text-sm md:text-base lg:text-xl font-display font-black tracking-tight uppercase text-brand-charcoal hover:text-brand-red transition-colors duration-200"
+                className="text-xs md:text-sm lg:text-lg font-display font-medium tracking-[0.03em] uppercase text-brand-charcoal hover:text-brand-red hover:opacity-80 transition-all duration-200"
                 data-cursor="pointer"
               >
                 {link.label}
@@ -152,7 +152,7 @@ export default function Navbar() {
               key={link.label}
               href={link.href}
               onClick={(e) => handleLinkClick(e, link.href)}
-              className="text-4xl font-display font-black tracking-tight uppercase text-brand-charcoal hover:text-brand-red transition-colors duration-200"
+              className="text-4xl font-display font-medium tracking-[0.03em] uppercase text-brand-charcoal hover:text-brand-red hover:opacity-80 transition-all duration-200"
               data-cursor="pointer"
             >
               {link.label}

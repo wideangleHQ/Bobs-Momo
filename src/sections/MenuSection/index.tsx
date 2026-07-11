@@ -216,7 +216,7 @@ function DesktopTabletMenu() {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
-  const navigate = useCallback(
+  const changeCenter = useCallback(
     (dir: 1 | -1) => {
       if (animating) return
       setAnimating(true)
@@ -226,8 +226,8 @@ function DesktopTabletMenu() {
     [animating]
   )
 
-  const slideNext = () => navigate(1)
-  const slidePrev = () => navigate(-1)
+  const slideNext = () => changeCenter(1)
+  const slidePrev = () => changeCenter(-1)
 
   const onTouchStart = (e: React.TouchEvent) => setTouchStart(e.targetTouches[0].clientX)
   const onTouchMove = (e: React.TouchEvent) => setTouchEnd(e.targetTouches[0].clientX)

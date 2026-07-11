@@ -32,41 +32,39 @@ function MarqueeRow({ text, outline = false, reverse = false }: MarqueeRowProps)
   )
 }
 
-export default function Hero() {
+function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Dynamic circle radius based on screen size
-      const getRadius = () => {
-        const vw = window.innerWidth
-        if (vw < 640) return 160
-        if (vw < 768) return 200
-        if (vw < 1024) return 240
-        return 250
-      }
-
-      // Calculate initial scale so the image covers the circle bounds exactly
-      const getInitialScale = () => {
+      const getTargetScale = () => {
         const vw = window.innerWidth
         const vh = window.innerHeight
-        const radius = getRadius()
-        const diameter = radius * 2
-        const minDimension = Math.min(vw, vh)
-        return diameter / minDimension
+        const circle = containerRef.current?.querySelector(".hero-circle-mask") as HTMLElement | null
+        const initialDiameter = circle?.offsetWidth || 500
+        return Math.hypot(vw, vh) / initialDiameter
       }
 
-      const initialRadius = getRadius()
-      const maxRadius = Math.max(window.innerWidth, window.innerHeight) * 1.25
-      const initialScale = getInitialScale()
-      const targetBorderScale = maxRadius / initialRadius
-
       // Initial States
-      gsap.set(".hero-foreground-img", {
-        clipPath: `circle(${initialRadius}px at 50% 50%)`,
+      gsap.set([".hero-circle-mask", ".hero-circle-border"], {
+        scale: 1,
+        transformOrigin: "50% 50%",
+        force3D: true,
       })
-      gsap.set(".hero-foreground-img img", {
-        scale: initialScale,
+
+      gsap.set(".hero-circle-image", {
+        xPercent: -50,
+        yPercent: -50,
+        scale: 1.08,
+        transformOrigin: "50% 50%",
+        force3D: true,
+      })
+
+      gsap.set(".hero-fullscreen-img", {
+        opacity: 0,
+        scale: 1.03,
+        transformOrigin: "50% 50%",
+        force3D: true,
       })
 
       // Entrance Animations on load (before user scrolls)
@@ -97,25 +95,24 @@ export default function Hero() {
         },
       })
 
-      // 1. Expand the circle mask of the foreground image (completes at 60% scroll progress)
-      tl.to(".hero-foreground-img", {
-        clipPath: `circle(${maxRadius}px at 50% 50%)`,
-        duration: 0.6,
+      // 1. Expand the circular wrapper until it covers the viewport.
+      tl.to(".hero-circle-mask", {
+        scale: getTargetScale,
+        duration: 0.5,
         ease: "power1.inOut",
       }, 0)
 
-      // 1b. Zoom the image from the circle bounds to full-screen cover (completes at 60% scroll progress)
-      tl.to(".hero-foreground-img img", {
-        scale: 1,
-        duration: 0.6,
-        ease: "power1.inOut",
+      tl.to(".hero-circle-image", {
+        scale: () => 1.08 / getTargetScale(),
+        duration: 0.5,
+        ease: "power2.out",
       }, 0)
 
-      // 2. Scale up and fade out the circle border overlay in perfect sync (completes at 60% scroll progress)
+      // 2. Scale up and fade out the circle border overlay in perfect sync.
       tl.to(".hero-circle-border", {
-        scale: targetBorderScale,
+        scale: getTargetScale,
         opacity: 0,
-        duration: 0.6,
+        duration: 0.5,
         ease: "power1.inOut",
       }, 0)
 
@@ -124,7 +121,7 @@ export default function Hero() {
         opacity: 0,
         y: 40,
         scale: 0.95,
-        duration: 0.4,
+        duration: 0.45,
         ease: "power1.out",
       }, 0)
 
@@ -132,7 +129,7 @@ export default function Hero() {
       tl.to(".hero-bg-glow", {
         opacity: 0,
         scale: 1.3,
-        duration: 0.4,
+        duration: 0.45,
         ease: "power1.out",
       }, 0)
 
@@ -141,16 +138,25 @@ export default function Hero() {
       tl.fromTo(".hero-title-container",
         {
           opacity: 0,
-          y: -30,
+          y: 34,
+          filter: "blur(10px)",
         },
         {
           opacity: 1,
           y: 0,
-          duration: 0.4,
-          ease: "power2.out",
+          filter: "blur(0px)",
+          duration: 0.45,
+          ease: "power3.out",
         },
-        0.35 // Start at 35% scroll
+        0.52
       )
+
+      tl.to(".hero-fullscreen-img", {
+        opacity: 1,
+        scale: 1,
+        duration: 0.1,
+        ease: "power1.out",
+      }, 0.9)
     }, containerRef)
 
     return () => ctx.revert()
@@ -181,21 +187,25 @@ export default function Hero() {
 
       {/* Pinned Foreground Image Expander Container */}
       <div
-        className="hero-foreground-img absolute inset-0 z-10 pointer-events-none flex items-center justify-center overflow-hidden"
+        className="hero-foreground-img absolute inset-0 z-10 pointer-events-none flex items-center justify-center"
         style={{
-          clipPath: "circle(clamp(150px, 20vw, 250px) at 50% 50%)",
-          willChange: "clip-path",
+          transform: "translate3d(0,0,0)",
         }}
       >
-        <img
-          src="/Images/Hero Section Background.png"
-          alt="Bob's Momo Platter"
-          className="w-full h-full object-cover select-none pointer-events-none brightness-[1.04] contrast-[1.04] saturate-[1.06]"
-          style={{ willChange: "transform" }}
-          loading="eager"
-          // @ts-ignore
-          fetchpriority="high"
-        />
+        <div
+          className="hero-circle-mask relative w-[320px] h-[320px] sm:w-[400px] sm:h-[400px] md:w-[480px] md:h-[480px] lg:w-[500px] lg:h-[500px] rounded-full overflow-hidden"
+          style={{ willChange: "transform", transform: "translate3d(0,0,0)" }}
+        >
+          <img
+            src="/Images/Hero Section Background.png"
+            alt="Bob's Momo Platter"
+            className="hero-circle-image absolute left-1/2 top-1/2 h-screen w-screen max-w-none object-cover object-center select-none pointer-events-none brightness-[1.04] contrast-[1.04] saturate-[1.06]"
+            style={{ willChange: "transform" }}
+            loading="eager"
+            // @ts-ignore
+            fetchpriority="high"
+          />
+        </div>
       </div>
 
       {/* ── Heading + Subtitle + CTA stack (Frame 2 — fades/slides in on scroll) ──
@@ -229,3 +239,5 @@ export default function Hero() {
     </section>
   )
 }
+
+export default Hero

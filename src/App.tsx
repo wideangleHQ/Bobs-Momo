@@ -59,7 +59,7 @@ export default function App() {
 
         {/* Top-level suspense acts as a fail-safe, but with startTransition, 
             React typically suspends in the background and keeps the old UI intact. */}
-        <Suspense fallback={null}>
+        <Suspense fallback={<div className="min-h-screen bg-brand-beige" />}>
           <div style={{ opacity: isPending ? 0.8 : 1, transition: 'opacity 0.2s' }}>
             {currentPath.startsWith("/menu") ? <MenuPage /> : <HomePage />}
           </div>
@@ -70,4 +70,3 @@ export default function App() {
     </SmoothScrolling>
   )
 }
-
