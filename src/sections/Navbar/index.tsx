@@ -100,7 +100,7 @@ export default function Navbar() {
             data-cursor="pointer"
           >
             <img
-              src="/Images/logo/logo.png"
+              src="/Images/logo/logo.svg"
               alt="Bob's Momo Logo"
               className="h-14 md:h-20 w-auto object-contain"
             />
