@@ -16,7 +16,7 @@ export default function MenuHero() {
   return (
     <div
       ref={heroRef}
-      className="w-full grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-12 items-start mb-3 md:mb-16 text-left px-4 md:px-0"
+      className="w-full grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-12 items-start mb-1 md:mb-4 text-left px-4 md:px-0"
     >
       {/* Left: Heading */}
       <div className="lg:col-span-7">

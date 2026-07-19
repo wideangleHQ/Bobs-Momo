@@ -1,0 +1,186 @@
+﻿📄 .gitignore
+📄 index.html
+📄 package.json
+📄 package-lock.json
+📄 postcss.config.js
+📄 project-structure.txt
+📄 tailwind.config.js
+📄 tailwind.css
+📄 tsconfig.app.json
+📄 tsconfig.json
+📄 tsconfig.node.json
+📄 vercel.json
+📄 vite.config.ts
+📁 .agents
+📁 public
+    📁 Colour Tone
+        📄 Screenshot 2026-07-05 232024.png
+    📁 Fonts
+        📄 Boldfinger.ttf
+        📄 dg-ghayaty-regular.ttf
+        📄 Octosale.otf
+    📁 icons
+    📁 Images
+        📄 bg-banner.png
+        📄 burger_classic.png
+        📄 burger_fancy.png
+        📄 burger_green.png
+        📄 burger_hero_tray.png
+        📄 burger_oklahoma.png
+        📄 french_fries.png
+        📄 Hero Section Background.png
+        📄 momo (1).png
+        📄 restaurant_vibe.png
+        📁 careers
+            📄 team.png
+        📁 frame-images
+            📄 Bobs special full.png
+            📄 Momos full.png
+            📄 Quenched full.png
+            📄 spring roll full.png
+            📄 thupla full.png
+            📄 WhatsApp Image 2026-05-22 at 11.17.09 PM.jpeg
+        📁 logo
+            📄 logo.PNG
+            📄 logo.svg
+            📄 momo (1).png
+        📁 menu-items
+            📄 Bobs-Special.png
+            📄 Momos.png
+            📄 Quenched.png
+            📄 Rolls.png
+            📄 Thupka.png
+        📁 Social-Media
+            📄 1.png
+            📄 2.png
+            📄 3.png
+            📄 4.png
+            📄 5.png
+        📁 stores
+            📄 Bobs-Momo 1.webp
+            📄 store-2.jpeg
+    📁 videos
+📁 src
+    📄 App.tsx
+    📄 index.tsx
+    📄 store.ts
+    📁 animations
+    📁 api
+        📄 index.ts
+    📁 assets
+        📁 icons
+        📁 images
+        📁 videos
+    📁 components
+        📄 CarouselControls.tsx
+        📄 CookieBanner.tsx
+        📄 CustomCursor.tsx
+        📄 ErrorBoundary.tsx
+        📄 FloatingOrderButton.tsx
+        📄 ImageReveal.tsx
+        📄 Preloader.tsx
+        📄 SmoothScrolling.tsx
+        📄 TextReveal.tsx
+        📁 about
+        📁 animations
+        📁 common
+        📁 contact
+        📁 gallery
+        📁 home
+        📁 layout
+        📁 menu
+        📁 menu-page
+            📄 CategoryTabs.tsx
+            📄 CircularGallery.css
+            📄 CircularGallery.tsx
+            📄 DesktopCarousel.tsx
+            📄 index.ts
+            📄 MenuCTA.tsx
+            📄 MenuHero.tsx
+            📄 MobileCarousel.tsx
+            📄 OutletSelector.tsx
+            📄 ProductCard.tsx
+            📄 ProductGrid.tsx
+        📁 sections
+        📁 ui
+    📁 config
+        📄 index.ts
+    📁 constants
+        📄 index.ts
+    📁 contexts
+    📁 data
+        📄 index.ts
+    📁 Fonts
+        📄 Boldfinger.ttf
+        📄 dg-ghayaty-regular.ttf
+        📄 Octosale.otf
+    📁 hooks
+        📄 index.ts
+    📁 layouts
+    📁 lib
+        📄 router.ts
+    📁 pages
+        📄 HomePage.tsx
+        📄 MenuPage.tsx
+    📁 providers
+    📁 routes
+        📄 index.ts
+    📁 sections
+        📁 AboutSection
+            📄 index.tsx
+            📁 components
+                📄 AboutImageCarousel.tsx
+                📄 AboutIntro.tsx
+        📁 CareersSection
+            📄 index.tsx
+        📁 FeedbackSection
+            📄 index.tsx
+        📁 Footer
+            📄 index.tsx
+            📁 components
+                📄 FooterActions.tsx
+                📄 FooterBottom.tsx
+                📄 FooterLanguageSelector.tsx
+                📄 FooterLogo.tsx
+                📄 FooterMain.tsx
+                📄 FooterNav.tsx
+        📁 FooterTypographySection
+        📁 Hero
+            📄 index.tsx
+            📁 components
+                📄 HeroCta.tsx
+                📄 HeroTextMarquee.tsx
+        📁 InstagramSection
+            📄 index.tsx
+            📁 components
+                📄 InstagramFeed.tsx
+                📄 InstagramPost.tsx
+        📁 LocationsSection
+            📄 index.tsx
+            📁 components
+        📁 MainContent
+            📄 index.tsx
+        📁 MenuSection
+            📄 index.tsx
+            📁 components
+                📄 BurgerCard.tsx
+                📄 BurgerCarousel.tsx
+                📄 Carousel.css
+                📄 ReactBitsCarousel.tsx
+        📁 Navbar
+            📄 index.tsx
+            📁 components
+                📄 DesktopNavbar.tsx
+                📄 LanguageSelector.tsx
+                📄 MobileLanguageSelector.tsx
+                📄 MobileNavbar.tsx
+                📄 NavbarActions.tsx
+                📄 NavbarLogo.tsx
+    📁 services
+        📄 index.ts
+    📁 store
+    📁 styles
+    📁 types
+        📄 index.ts
+    📁 utils
+        📄 index.ts
