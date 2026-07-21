@@ -14,7 +14,8 @@ export interface MenuProduct {
   isChefSpecial: boolean
   availability: boolean
   tags: string[]
-  prices: Record<string, number>
+  prices?: Record<string, number>
+  variants?: ProductVariant[]
   sortOrder: number
 }
 

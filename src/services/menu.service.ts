@@ -34,15 +34,27 @@ function formatPrice(amount: number): string {
 }
 
 function toMenuItem(product: MenuProduct): MenuItem {
-  const variants = pricesToVariants(product.prices)
-  const hasOnlyDefault = Object.keys(product.prices || {}).length === 1 && "default" in (product.prices || {})
+  let variants: ProductVariant[]
+  let lowestPrice: number
+
+  if (product.variants && product.variants.length > 0) {
+    variants = product.variants
+    lowestPrice = Math.min(...product.variants.map((v: ProductVariant) => v.price))
+  } else {
+    variants = pricesToVariants(product.prices)
+    const hasOnlyDefault = Object.keys(product.prices || {}).length === 1 && "default" in (product.prices || {})
+    if (hasOnlyDefault) {
+      variants = [{ id: "default", label: "", price: product.prices.default }]
+    }
+    lowestPrice = getLowestPrice(product.prices)
+  }
 
   return {
     id: product.id,
     title: product.name,
     ingredients: product.description || "",
-    price: formatPrice(getLowestPrice(product.prices)),
-    variants: hasOnlyDefault ? [{ id: "default", label: "", price: product.prices.default }] : variants,
+    price: formatPrice(lowestPrice),
+    variants,
     image: product.image,
     category: product.category,
     isVeg: product.isVeg ?? true,

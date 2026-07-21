@@ -18,21 +18,22 @@ function lerp(p1, p2, t) {
   return p1 + (p2 - p1) * t;
 }
 
-function createCardMetadataCanvas(item, textColor) {
+function createCardMetadataCanvas(item, textColor, canvasW = 400, canvasH = 550, imgFraction = 0.55) {
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');
 
   const dpr = Math.min(window.devicePixelRatio || 1, 2) * 1.5;
-  const width = 400 * dpr;
-  const height = 550 * dpr;
+  const width = canvasW * dpr;
+  const height = canvasH * dpr;
   canvas.width = width;
   canvas.height = height;
 
   context.scale(dpr, dpr);
-  context.clearRect(0, 0, 400, 550);
+  context.clearRect(0, 0, canvasW, canvasH);
 
-  const cardW = 400;
-  const padding = 20;
+  const cardW = canvasW;
+  const isMobile = canvasH > 600;
+  const padding = isMobile ? 24 : 20;
 
   // Badges at the top over image
   let badgeX = padding;
@@ -74,9 +75,7 @@ function createCardMetadataCanvas(item, textColor) {
     drawBadge('🆕 New', '#3b82f6', '#ffffff');
   }
 
-  // The image height is 0.55 (55%), so white area starts around y=302.5. 
-  // Let's start text at y=320.
-  let currentY = 320;
+  let currentY = Math.round(imgFraction * canvasH) + (isMobile ? 24 : 18);
 
   // Priority 1: Large Product Name
   context.font = '900 24px Boldfinger, Poppins, sans-serif';
@@ -85,6 +84,7 @@ function createCardMetadataCanvas(item, textColor) {
   context.textBaseline = 'top';
 
   const nameMaxWidth = cardW - padding * 2;
+  const titleLineH = isMobile ? 32 : 28;
   const nameWords = item.title.toUpperCase().split(' ');
   let nameLine = '';
   for (let n = 0; n < nameWords.length; n++) {
@@ -93,18 +93,19 @@ function createCardMetadataCanvas(item, textColor) {
     if (metrics.width > nameMaxWidth && n > 0) {
       context.fillText(nameLine, padding, currentY);
       nameLine = nameWords[n] + ' ';
-      currentY += 28;
+      currentY += titleLineH;
     } else {
       nameLine = testLine;
     }
   }
   context.fillText(nameLine, padding, currentY);
-  currentY += 34;
+  currentY += isMobile ? 38 : 34;
 
   // Priority 2: Short Description
   context.font = '500 13px Poppins, sans-serif';
   context.fillStyle = '#666666';
 
+  const descLineH = isMobile ? 22 : 20;
   const descWords = item.ingredients.split(' ');
   let descLine = '';
   let lineCount = 0;
@@ -122,7 +123,7 @@ function createCardMetadataCanvas(item, textColor) {
       }
       context.fillText(descLine, padding, currentY);
       descLine = descWords[n] + ' ';
-      currentY += 20;
+      currentY += descLineH;
       lineCount++;
     } else {
       descLine = testLine;
@@ -131,12 +132,13 @@ function createCardMetadataCanvas(item, textColor) {
   if (lineCount < maxDescLines) {
     context.fillText(descLine, padding, currentY);
   }
-  currentY += 32;
+  currentY += isMobile ? 36 : 32;
 
   // Priority 3: Price Variants (Chips)
   let chipX = padding;
   let chipY = currentY;
-  const chipH = 32;
+  const chipH = isMobile ? 36 : 32;
+  const chipGap = isMobile ? 12 : 10;
 
   context.font = '700 13px Poppins, sans-serif';
 
@@ -148,7 +150,7 @@ function createCardMetadataCanvas(item, textColor) {
 
       if (chipX + chipW > cardW - padding) {
         chipX = padding;
-        chipY += chipH + 10;
+        chipY += chipH + chipGap;
       }
 
       context.fillStyle = '#F5F5F5';
@@ -165,18 +167,19 @@ function createCardMetadataCanvas(item, textColor) {
       context.textAlign = 'center';
       context.fillText(chipText, chipX + chipW / 2, chipY + chipH / 2 + 1);
 
-      chipX += chipW + 10;
+      chipX += chipW + chipGap;
     }
   }
 
-  // Priority 4: Category at Bottom
+  // Priority 4: Category badge
+  const chipsBottomY = (item.variants && item.variants.length > 0) ? chipY + chipH : chipY;
   const catText = item.category.toUpperCase().replace('_', ' ');
   context.font = '800 11px Poppins, sans-serif';
   const catMetrics = context.measureText(catText);
   const catW = catMetrics.width + 16;
   const catH = 24;
 
-  const bottomY = 550 - padding - catH;
+  const bottomY = isMobile ? chipsBottomY + 22 : canvasH - padding - catH;
 
   context.fillStyle = '#E9171F';
   context.beginPath();
@@ -214,6 +217,7 @@ const MEDIA_FRAGMENT = /* glsl */ `
   uniform vec2 uPlaneSizes;
   uniform sampler2D tMap;
   uniform float uBorderRadius;
+  uniform float uImgHeight;
   uniform float uOpacity;
   varying vec2 vUv;
 
@@ -223,13 +227,12 @@ const MEDIA_FRAGMENT = /* glsl */ `
   }
 
   void main() {
-    float imgHeight = 0.55;
     vec4 finalColor;
     vec4 cardBg = vec4(1.0, 1.0, 1.0, 1.0);
 
-    if (vUv.y >= (1.0 - imgHeight)) {
-      float normalizedY = (vUv.y - (1.0 - imgHeight)) / imgHeight;
-      vec2 imgPlaneSizes = vec2(uPlaneSizes.x, uPlaneSizes.y * imgHeight);
+    if (vUv.y >= (1.0 - uImgHeight)) {
+      float normalizedY = (vUv.y - (1.0 - uImgHeight)) / uImgHeight;
+      vec2 imgPlaneSizes = vec2(uPlaneSizes.x, uPlaneSizes.y * uImgHeight);
       vec2 ratio = vec2(
         min((imgPlaneSizes.x / imgPlaneSizes.y) / (uImageSizes.x / uImageSizes.y), 1.0),
         min((imgPlaneSizes.y / imgPlaneSizes.x) / (uImageSizes.y / uImageSizes.x), 1.0)
@@ -293,6 +296,7 @@ class Media {
     this.extra = 0;
     this.opacity = 1;
     this.planeSizes = [0, 0];
+    this.imgHeight = 0.55;
     this.textureEntry = null;
     this.titleTexture = null;
     this.createMeshes();
@@ -311,6 +315,7 @@ class Media {
       u.uImageSizes.value[1] = this.textureEntry.height;
       u.uPlaneSizes.value[0] = this.planeSizes[0];
       u.uPlaneSizes.value[1] = this.planeSizes[1];
+      u.uImgHeight.value = this.imgHeight;
       u.uOpacity.value = this.opacity;
     });
 
@@ -377,6 +382,13 @@ class Media {
       }
     }
 
+    // Painter's order within ogl's depthTest:false render group: cards draw
+    // far-to-near, and each metadata quad draws right after its own card so
+    // the text always sits on its card face and never bleeds behind a
+    // nearer neighbour.
+    this.plane.renderOrder = this.plane.position.z;
+    this.titleMesh.renderOrder = this.plane.position.z + 0.001;
+
     const distFromCenter = Math.abs(this.plane.position.x);
     const maxDist = this.width * 1.5;
     const normDist = Math.min(distFromCenter / maxDist, 1.0);
@@ -416,7 +428,7 @@ class Media {
 
     if (screen.width < 768) {
       this.targetWidthPx = screen.width * 0.70;
-      this.targetHeightPx = screen.height * 0.55;
+      this.targetHeightPx = screen.height * 0.55 + 80;
       this.gapPx = screen.width * 0.04;
     } else if (screen.width < 1200) {
       this.targetWidthPx = 300;
@@ -435,7 +447,16 @@ class Media {
     this.widthTotal = this.width * this.length;
     this.x = this.width * this.index;
 
-    this.titleMesh.scale.set(this.plane.scale.x, this.plane.scale.y, 1);
+    this.imgHeight = this.app.cardImgHeight;
+
+    if (this.item) {
+      this.titleTexture = this.app.getTitleTexture(this.item);
+    }
+
+    // titleMesh is a child of plane, so it inherits the plane's world scale;
+    // identity local scale maps the metadata texture exactly onto the card face
+    // (and keeps it locked to the card through the per-frame scale animation).
+    this.titleMesh.scale.set(1, 1, 1);
     this.titleMesh.position.set(0, 0, 0.01);
   }
 }
@@ -474,6 +495,8 @@ class App {
 
     this.imageTextureCache = new Map();
     this.titleTextureCache = new Map();
+    this.cardCanvasH = 550;
+    this.cardImgHeight = 0.55;
     this.mediaPool = [];
     this.medias = [];
     this.itemsLength = 0;
@@ -529,12 +552,18 @@ class App {
         uPlaneSizes: { value: [0, 0] },
         uImageSizes: { value: [0, 0] },
         uBorderRadius: { value: this.borderRadius },
+        uImgHeight: { value: 0.55 },
         uOpacity: { value: 1.0 }
       },
       transparent: true
     });
 
+    // Same depth flags as mediaProgram: ogl groups transparent meshes by
+    // depthTest and draws the depthTest:false group last, so the titles must
+    // share the cards' group or every card body paints over every title.
     this.titleProgram = new Program(this.gl, {
+      depthTest: false,
+      depthWrite: false,
       vertex: TITLE_VERTEX,
       fragment: TITLE_FRAGMENT,
       uniforms: {
@@ -566,11 +595,11 @@ class App {
   /** One rasterized metadata canvas per unique item content, generated exactly once. */
   getTitleTexture(item) {
     const variantKey = item.variants ? item.variants.map(v => `${v.label}:${v.price}`).join(',') : '';
-    const key = `${item.id}|${item.title}|${item.price}|${item.category}|${item.isVeg}|${item.isChefSpecial}|${item.ingredients}|${variantKey}`;
+    const key = `${item.id}|${item.title}|${item.price}|${item.category}|${item.isVeg}|${item.isChefSpecial}|${item.ingredients}|${variantKey}|${this.cardCanvasH}`;
     let texture = this.titleTextureCache.get(key);
     if (!texture) {
       texture = new Texture(this.gl, { generateMipmaps: false });
-      texture.image = createCardMetadataCanvas(item, this.textColor);
+      texture.image = createCardMetadataCanvas(item, this.textColor, 400, this.cardCanvasH, this.cardImgHeight);
       this.titleTextureCache.set(key, texture);
     }
     return texture;
@@ -699,6 +728,24 @@ class App {
     const height = 2 * Math.tan(fov / 2) * this.camera.position.z;
     const width = height * this.camera.aspect;
     this.viewport = { width, height };
+
+    const prevCanvasH = this.cardCanvasH;
+    if (this.screen.width < 768) {
+      const tw = this.screen.width * 0.70;
+      const th = this.screen.height * 0.55 + 80;
+      this.cardCanvasH = Math.round(400 * th / tw);
+      this.cardImgHeight = 0.50;
+    } else {
+      this.cardCanvasH = 550;
+      this.cardImgHeight = 0.55;
+    }
+    if (prevCanvasH !== undefined && prevCanvasH !== this.cardCanvasH) {
+      this.titleTextureCache.forEach(texture => {
+        if (texture && texture.texture) this.gl.deleteTexture(texture.texture);
+      });
+      this.titleTextureCache.clear();
+    }
+
     if (this.medias) {
       this.medias.forEach(media => media.onResize());
     }
