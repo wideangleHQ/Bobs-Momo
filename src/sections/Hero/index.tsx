@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import React, { useLayoutEffect, useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -35,7 +35,12 @@ function MarqueeRow({ text, outline = false, reverse = false }: MarqueeRowProps)
 function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
+  // useLayoutEffect (not useEffect) so ScrollTrigger's pin-spacer is torn down
+  // via ctx.revert() during React's mutation phase — before React removes the
+  // pinned <section> on navigation. A passive-phase (useEffect) cleanup runs too
+  // late: React's removeChild fires first against the GSAP-reparented node and
+  // throws "NotFoundError: The node to be removed is not a child of this node".
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const getTargetScale = () => {
         const vw = window.innerWidth

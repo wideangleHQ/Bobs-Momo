@@ -18,7 +18,7 @@ function lerp(p1, p2, t) {
   return p1 + (p2 - p1) * t;
 }
 
-function createCardMetadataCanvas(item, textColor, canvasW = 400, canvasH = 550, imgFraction = 0.55) {
+function createCardMetadataCanvas(item, textColor, canvasW = 400, canvasH = 550, imgFraction = 0.55, isMobile = false) {
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');
 
@@ -32,59 +32,20 @@ function createCardMetadataCanvas(item, textColor, canvasW = 400, canvasH = 550,
   context.clearRect(0, 0, canvasW, canvasH);
 
   const cardW = canvasW;
-  const isMobile = canvasH > 600;
-  const padding = isMobile ? 24 : 20;
-
-  // Badges at the top over image
-  let badgeX = padding;
-  const badgeY = padding;
-
-  function drawBadge(text, bgColor, fgColor) {
-    context.font = '800 11px Poppins, sans-serif';
-    const metrics = context.measureText(text);
-    const w = metrics.width + 16;
-    const h = 24;
-    context.fillStyle = bgColor;
-    context.beginPath();
-    if (context.roundRect) {
-      context.roundRect(badgeX, badgeY, w, h, 12);
-    } else {
-      context.rect(badgeX, badgeY, w, h);
-    }
-    context.fill();
-
-    context.fillStyle = fgColor;
-    context.textBaseline = 'middle';
-    context.textAlign = 'center';
-    context.fillText(text, badgeX + w / 2, badgeY + h / 2 + 1);
-    badgeX += w + 8;
-  }
+  const padding = isMobile ? 26 : 20;
 
 
 
-  if (item.isVeg !== undefined) {
-    drawBadge(item.isVeg ? '🟢 Veg' : '🔴 Non-Veg', item.isVeg ? '#22c55e' : '#ef4444', '#ffffff');
-  }
-  if (item.isChefSpecial) {
-    drawBadge("⭐ Chef's Special", '#fbbf24', '#1a1a1a');
-  }
-  if (item.tags && item.tags.includes('Best Seller')) {
-    drawBadge('🔥 Bestseller', '#ef4444', '#ffffff');
-  }
-  if (item.tags && item.tags.includes('New')) {
-    drawBadge('🆕 New', '#3b82f6', '#ffffff');
-  }
-
-  let currentY = Math.round(imgFraction * canvasH) + (isMobile ? 24 : 18);
+  let currentY = Math.round(imgFraction * canvasH) + (isMobile ? 26 : 18);
 
   // Priority 1: Large Product Name
-  context.font = '900 24px Boldfinger, Poppins, sans-serif';
+  context.font = `900 ${isMobile ? 30 : 24}px Boldfinger, Poppins, sans-serif`;
   context.fillStyle = '#1A1A1A';
   context.textAlign = 'left';
   context.textBaseline = 'top';
 
   const nameMaxWidth = cardW - padding * 2;
-  const titleLineH = isMobile ? 32 : 28;
+  const titleLineH = isMobile ? 38 : 28;
   const nameWords = item.title.toUpperCase().split(' ');
   let nameLine = '';
   for (let n = 0; n < nameWords.length; n++) {
@@ -99,13 +60,13 @@ function createCardMetadataCanvas(item, textColor, canvasW = 400, canvasH = 550,
     }
   }
   context.fillText(nameLine, padding, currentY);
-  currentY += isMobile ? 38 : 34;
+  currentY += isMobile ? 42 : 34;
 
   // Priority 2: Short Description
-  context.font = '500 13px Poppins, sans-serif';
+  context.font = `500 ${isMobile ? 16 : 13}px Poppins, sans-serif`;
   context.fillStyle = '#666666';
 
-  const descLineH = isMobile ? 22 : 20;
+  const descLineH = isMobile ? 26 : 20;
   const descWords = item.ingredients.split(' ');
   let descLine = '';
   let lineCount = 0;
@@ -132,21 +93,21 @@ function createCardMetadataCanvas(item, textColor, canvasW = 400, canvasH = 550,
   if (lineCount < maxDescLines) {
     context.fillText(descLine, padding, currentY);
   }
-  currentY += isMobile ? 36 : 32;
+  currentY += isMobile ? 30 : 32;
 
   // Priority 3: Price Variants (Chips)
   let chipX = padding;
   let chipY = currentY;
-  const chipH = isMobile ? 36 : 32;
+  const chipH = isMobile ? 40 : 32;
   const chipGap = isMobile ? 12 : 10;
 
-  context.font = '700 13px Poppins, sans-serif';
+  context.font = `700 ${isMobile ? 16 : 13}px Poppins, sans-serif`;
 
   if (item.variants && item.variants.length > 0) {
     for (const variant of item.variants) {
       const chipText = variant.label ? `${variant.label} ₹${variant.price}` : `₹${variant.price}`;
       const metrics = context.measureText(chipText);
-      const chipW = metrics.width + 24;
+      const chipW = metrics.width + (isMobile ? 28 : 24);
 
       if (chipX + chipW > cardW - padding) {
         chipX = padding;
@@ -174,12 +135,17 @@ function createCardMetadataCanvas(item, textColor, canvasW = 400, canvasH = 550,
   // Priority 4: Category badge
   const chipsBottomY = (item.variants && item.variants.length > 0) ? chipY + chipH : chipY;
   const catText = item.category.toUpperCase().replace('_', ' ');
-  context.font = '800 11px Poppins, sans-serif';
+  context.font = `800 ${isMobile ? 13 : 11}px Poppins, sans-serif`;
   const catMetrics = context.measureText(catText);
-  const catW = catMetrics.width + 16;
-  const catH = 24;
+  const catW = catMetrics.width + (isMobile ? 20 : 16);
+  const catH = isMobile ? 26 : 24;
 
-  const bottomY = isMobile ? chipsBottomY + 22 : canvasH - padding - catH;
+  // On mobile the badge follows the chips, but never past the card's bottom
+  // padding — the clamp guarantees it stays inside the card on the smallest
+  // (dense, 4-variant) viewports without clipping.
+  const bottomY = isMobile
+    ? Math.min(chipsBottomY + 20, canvasH - padding - catH)
+    : canvasH - padding - catH;
 
   context.fillStyle = '#E9171F';
   context.beginPath();
@@ -426,9 +392,16 @@ class Media {
     this.targetHeightPx = 550;
     this.gapPx = 28;
 
-    if (screen.width < 768) {
-      this.targetWidthPx = screen.width * 0.70;
-      this.targetHeightPx = screen.height * 0.55 + 80;
+    // Gate the phone layout on the actual viewport (matches Tailwind's md
+    // breakpoint and the page's header switch) rather than the 90vw container
+    // width — otherwise a 768px viewport's ~691px container falls into the
+    // phone branch and the tall mobile text layout clips in the short card.
+    if (window.innerWidth < 768) {
+      // Cap keeps the card phone-proportioned (tall) on wide-but-short
+      // portrait-tablet containers so the mobile text layout always has room;
+      // real phones (<= 430px, container <= ~390px) never reach the cap.
+      this.targetWidthPx = Math.min(screen.width * 0.70, 300);
+      this.targetHeightPx = screen.height * 0.60 + 95;
       this.gapPx = screen.width * 0.04;
     } else if (screen.width < 1200) {
       this.targetWidthPx = 300;
@@ -493,14 +466,31 @@ class App {
     this.scroll = { ease: scrollEase, current: 0, target: 0, last: 0 };
     this.onCheckDebounce = debounce(this.onCheck, 200);
 
+    // Interaction / inertia model. During an active drag the scroll tracks the
+    // pointer almost 1:1 (dragEase); on release the accumulated velocity throws
+    // the carousel forward (momentum) before snapping to the nearest card, and
+    // the lower release ease glides it in with no overshoot.
+    this.isDown = false;
+    this.dragEase = 0.22;
+    this.velocity = 0;
+    this.momentumMs = 180;
+    this.maxFlingCards = 5;
+    this.isVerticalScroll = false;
+    this.directionLocked = false;
+    this.lastMoveTime = 0;
+    this.lastMoveTarget = 0;
+
     this.imageTextureCache = new Map();
     this.titleTextureCache = new Map();
     this.cardCanvasH = 550;
     this.cardImgHeight = 0.55;
+    this.cardIsMobile = false;
     this.mediaPool = [];
     this.medias = [];
     this.itemsLength = 0;
     this.currentItems = null;
+
+    this.destroyed = false;
 
     this.createRenderer();
     this.createCamera();
@@ -595,11 +585,11 @@ class App {
   /** One rasterized metadata canvas per unique item content, generated exactly once. */
   getTitleTexture(item) {
     const variantKey = item.variants ? item.variants.map(v => `${v.label}:${v.price}`).join(',') : '';
-    const key = `${item.id}|${item.title}|${item.price}|${item.category}|${item.isVeg}|${item.isChefSpecial}|${item.ingredients}|${variantKey}|${this.cardCanvasH}`;
+    const key = `${item.id}|${item.title}|${item.price}|${item.category}|${item.ingredients}|${variantKey}|${this.cardCanvasH}|${this.cardIsMobile}`;
     let texture = this.titleTextureCache.get(key);
     if (!texture) {
       texture = new Texture(this.gl, { generateMipmaps: false });
-      texture.image = createCardMetadataCanvas(item, this.textColor, 400, this.cardCanvasH, this.cardImgHeight);
+      texture.image = createCardMetadataCanvas(item, this.textColor, 400, this.cardCanvasH, this.cardImgHeight, this.cardIsMobile);
       this.titleTextureCache.set(key, texture);
     }
     return texture;
@@ -640,17 +630,72 @@ class App {
     this.isDown = true;
     this.scroll.position = this.scroll.current;
     this.start = e.touches ? e.touches[0].clientX : e.clientX;
+    this.startY = e.touches ? e.touches[0].clientY : e.clientY;
+    // Reset per-gesture inertia + directional-intent state
+    this.velocity = 0;
+    this.isVerticalScroll = false;
+    this.directionLocked = false;
+    this.lastMoveTime = performance.now();
+    this.lastMoveTarget = this.scroll.current;
   }
   onTouchMove(e) {
     if (!this.isDown) return;
     const x = e.touches ? e.touches[0].clientX : e.clientX;
+    const y = e.touches ? e.touches[0].clientY : e.clientY;
+
+    // Directional intent lock (touch only): if the gesture is clearly vertical,
+    // yield to native page scrolling and leave the carousel untouched so the
+    // swipe never feels like it's fighting the page.
+    if (e.touches && !this.directionLocked) {
+      const dx = Math.abs(x - this.start);
+      const dy = Math.abs(y - this.startY);
+      if (dx > 8 || dy > 8) {
+        this.directionLocked = true;
+        this.isVerticalScroll = dy > dx * 1.2;
+      }
+    }
+    if (this.isVerticalScroll) return;
+
     const pxToUnits = this.viewport.width / this.screen.width;
     const distance = (this.start - x) * pxToUnits * (this.scrollSpeed * 0.45);
-    this.scroll.target = this.scroll.position + distance;
+    const newTarget = this.scroll.position + distance;
+
+    // Smoothed pointer velocity in scroll-units per millisecond, used to throw
+    // the carousel on release.
+    const now = performance.now();
+    const dt = Math.max(now - this.lastMoveTime, 1);
+    const instant = (newTarget - this.lastMoveTarget) / dt;
+    this.velocity = lerp(this.velocity, instant, 0.4);
+    this.lastMoveTime = now;
+    this.lastMoveTarget = newTarget;
+
+    this.scroll.target = newTarget;
   }
   onTouchUp() {
+    if (!this.isDown) return;
     this.isDown = false;
-    this.onCheck();
+
+    if (this.isVerticalScroll) {
+      this.isVerticalScroll = false;
+      return;
+    }
+
+    // Project the fling forward by the release velocity, clamp the throw to a
+    // sane number of cards, then snap to the nearest card. The lower release
+    // ease glides scroll.current into that snapped target with no overshoot.
+    if (this.medias && this.medias[0]) {
+      const width = this.medias[0].width;
+      const projected = this.scroll.target + this.velocity * this.momentumMs;
+      const maxTravel = width * this.maxFlingCards;
+      const clamped = Math.max(
+        this.scroll.target - maxTravel,
+        Math.min(this.scroll.target + maxTravel, projected)
+      );
+      this.scroll.target = width * Math.round(clamped / width);
+    } else {
+      this.onCheck();
+    }
+    this.velocity = 0;
   }
   onWheel(e) {
     e.preventDefault();
@@ -730,16 +775,18 @@ class App {
     this.viewport = { width, height };
 
     const prevCanvasH = this.cardCanvasH;
-    if (this.screen.width < 768) {
-      const tw = this.screen.width * 0.70;
-      const th = this.screen.height * 0.55 + 80;
+    const prevIsMobile = this.cardIsMobile;
+    this.cardIsMobile = window.innerWidth < 768;
+    if (this.cardIsMobile) {
+      const tw = Math.min(this.screen.width * 0.70, 300);
+      const th = this.screen.height * 0.60 + 95;
       this.cardCanvasH = Math.round(400 * th / tw);
-      this.cardImgHeight = 0.50;
+      this.cardImgHeight = 0.46;
     } else {
       this.cardCanvasH = 550;
       this.cardImgHeight = 0.55;
     }
-    if (prevCanvasH !== undefined && prevCanvasH !== this.cardCanvasH) {
+    if (prevCanvasH !== undefined && (prevCanvasH !== this.cardCanvasH || prevIsMobile !== this.cardIsMobile)) {
       this.titleTextureCache.forEach(texture => {
         if (texture && texture.texture) this.gl.deleteTexture(texture.texture);
       });
@@ -751,7 +798,11 @@ class App {
     }
   }
   update() {
-    this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
+    if (this.destroyed) return;
+    // Track the pointer near 1:1 while dragging (kills the laggy/sticky feel),
+    // then fall back to the gentle release ease for momentum glide + snap.
+    const ease = this.isDown ? this.dragEase : this.scroll.ease;
+    this.scroll.current = lerp(this.scroll.current, this.scroll.target, ease);
     const direction = this.scroll.current > this.scroll.last ? 'right' : 'left';
     if (this.medias) {
       this.medias.forEach(media => media.update(this.scroll, direction));
@@ -793,15 +844,19 @@ class App {
     this.container.addEventListener('touchmove', this.boundOnTouchMove, { passive: true });
     window.addEventListener('touchend', this.boundOnTouchUp);
 
-    window.addEventListener('keydown', this.boundOnKeyDown);
+    // Scope keyboard nav to the focused gallery so arrow keys only steer the
+    // carousel when it's the active element — never hijack page-wide arrows.
+    this.container.addEventListener('keydown', this.boundOnKeyDown);
   }
   destroy() {
+    if (this.destroyed) return;
+    this.destroyed = true;
+
     window.cancelAnimationFrame(this.raf);
 
     window.removeEventListener('resize', this.boundOnResize);
     window.removeEventListener('mouseup', this.boundOnTouchUp);
     window.removeEventListener('touchend', this.boundOnTouchUp);
-    window.removeEventListener('keydown', this.boundOnKeyDown);
 
     if (this.container) {
       this.container.removeEventListener('wheel', this.boundOnWheel);
@@ -809,15 +864,11 @@ class App {
       this.container.removeEventListener('mousemove', this.boundOnTouchMove);
       this.container.removeEventListener('touchstart', this.boundOnTouchDown);
       this.container.removeEventListener('touchmove', this.boundOnTouchMove);
+      this.container.removeEventListener('keydown', this.boundOnKeyDown);
     }
 
     this.mediaPool.length = 0;
     this.medias.length = 0;
-
-    if (this.planeGeometry) this.planeGeometry.remove();
-    if (this.titleGeometry) this.titleGeometry.remove();
-    if (this.mediaProgram) this.mediaProgram.remove();
-    if (this.titleProgram) this.titleProgram.remove();
 
     this.imageTextureCache.forEach(entry => {
       if (entry.texture && entry.texture.texture) this.gl.deleteTexture(entry.texture.texture);
@@ -830,10 +881,6 @@ class App {
 
     const loseContext = this.gl.getExtension('WEBGL_lose_context');
     if (loseContext) loseContext.loseContext();
-
-    if (this.gl.canvas.parentNode) {
-      this.gl.canvas.parentNode.removeChild(this.gl.canvas);
-    }
   }
 }
 
@@ -900,34 +947,36 @@ export default function CircularGallery({
 
   return (
     <div className="w-full h-full flex flex-col justify-between relative overflow-visible">
-      {/* Navigation Arrows for Desktop Screen */}
+      {/* Premium glassmorphism navigation arrows (all breakpoints) */}
       {items.length > 1 && (
-        <div className="hidden md:block">
+        <>
           <button
+            type="button"
             onClick={slidePrev}
-            className="absolute left-4 lg:left-12 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full border border-brand-charcoal/10 bg-white flex items-center justify-center shadow-sm hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
-            aria-label="Previous Item"
+            className="absolute left-1 md:left-4 lg:left-12 top-1/2 -translate-y-1/2 z-30 w-11 h-11 md:w-12 md:h-12 rounded-full border border-white/50 bg-white/50 backdrop-blur-md flex items-center justify-center shadow-lg hover:bg-white/70 hover:scale-105 hover:shadow-xl active:scale-90 transition-all duration-300 ease-out cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-red/60"
+            aria-label="Previous item"
           >
-            <ChevronLeft size={20} className="text-brand-charcoal" />
+            <ChevronLeft size={20} className="text-brand-charcoal drop-shadow-sm" />
           </button>
           <button
+            type="button"
             onClick={slideNext}
-            className="absolute right-4 lg:right-12 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full border border-brand-charcoal/10 bg-white flex items-center justify-center shadow-sm hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
-            aria-label="Next Item"
+            className="absolute right-1 md:right-4 lg:right-12 top-1/2 -translate-y-1/2 z-30 w-11 h-11 md:w-12 md:h-12 rounded-full border border-white/50 bg-white/50 backdrop-blur-md flex items-center justify-center shadow-lg hover:bg-white/70 hover:scale-105 hover:shadow-xl active:scale-90 transition-all duration-300 ease-out cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-red/60"
+            aria-label="Next item"
           >
-            <ChevronRight size={20} className="text-brand-charcoal" />
+            <ChevronRight size={20} className="text-brand-charcoal drop-shadow-sm" />
           </button>
-        </div>
+        </>
       )}
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={fadeControls}
-        className="circular-gallery flex-grow"
+        className="circular-gallery flex-grow rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-red/40"
         ref={containerRef}
         tabIndex={0}
         role="region"
-        aria-label="Circular image gallery. Use left and right arrow keys to navigate."
+        aria-label="Product gallery. Use left and right arrow keys to navigate."
       />
 
       {/* Pagination Indicators / Dots */}

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from "react"
+import React, { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import useEmblaCarousel from "embla-carousel-react"
@@ -238,7 +238,12 @@ export default function AboutSection() {
   const mobileDescRef   = useRef<HTMLDivElement>(null)
   const mobileBtnRef    = useRef<HTMLButtonElement>(null)
 
-  useEffect(() => {
+  // useLayoutEffect (not useEffect) so ScrollTrigger's pin-spacer is torn down
+  // via ctx.revert() during React's mutation phase — before React removes the
+  // pinned <section> on navigation. A passive-phase (useEffect) cleanup runs too
+  // late: React's removeChild fires first against the GSAP-reparented node and
+  // throws "NotFoundError: The node to be removed is not a child of this node".
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
 
       // ── 1. Desktop & Tablet: Pinned horizontal scroll gallery ──────────────

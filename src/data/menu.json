@@ -473,6 +473,767 @@
           "sortOrder": 30
         }
       ]
+    },
+    {
+      "id": "KALINGA_NAGAR",
+      "name": "Kalinga Nagar",
+      "categories": [
+        { "id": "momos", "label": "MOMOS", "thumbnail": "/Images/menu-items/Momos.png", "sortOrder": 1 },
+        { "id": "chef_special", "label": "CHEF'S SPECIAL", "thumbnail": "/Images/menu-items/Bobs-Special.png", "sortOrder": 2 },
+        { "id": "rolls", "label": "ROLLS", "thumbnail": "/Images/menu-items/Rolls.png", "sortOrder": 3 },
+        { "id": "thukpa", "label": "THUKPA", "thumbnail": "/Images/menu-items/Thukpa.png", "sortOrder": 4 },
+        { "id": "laphing", "label": "LAPHING", "thumbnail": "/Images/menu-items/Laphing.png", "sortOrder": 5 },
+        { "id": "pan_asian", "label": "PAN ASIAN", "thumbnail": "/Images/menu-items/PanAsian.png", "sortOrder": 6 },
+        { "id": "snackers", "label": "SNACKERS", "thumbnail": "/Images/menu-items/Snackers.png", "sortOrder": 7 },
+        { "id": "ramen", "label": "RAMEN", "thumbnail": "/Images/menu-items/Ramen.png", "sortOrder": 8 },
+        { "id": "nigiri", "label": "NIGIRI", "thumbnail": "/Images/menu-items/Nigiri.png", "sortOrder": 9 },
+        { "id": "maki", "label": "MAKI", "thumbnail": "/Images/menu-items/Maki.png", "sortOrder": 10 },
+        { "id": "mocktail", "label": "MOCKTAIL", "thumbnail": "/Images/menu-items/Mocktail.png", "sortOrder": 11 },
+        { "id": "yuzu", "label": "YUZU", "thumbnail": "/Images/menu-items/Yuzu.png", "sortOrder": 12 },
+        { "id": "soft_drinks", "label": "SOFT DRINK", "thumbnail": "/Images/menu-items/SoftDrinks.png", "sortOrder": 13 },
+        { "id": "ice_tea", "label": "ICE TEA", "thumbnail": "/Images/menu-items/IceTea.png", "sortOrder": 14 },
+        { "id": "addons", "label": "ADD-ONS", "thumbnail": "/Images/menu-items/Addons.png", "sortOrder": 15 }
+      ],
+      "products": [
+        {
+          "id": "kn-steam-classic",
+          "category": "momos",
+          "name": "Steam Classic",
+          "description": "Soft handmade Himalayan dumplings filled with delicious house-made stuffing and served with signature chilli dip.",
+          "image": "/Images/menu-items/Momos.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": ["Best Seller"],
+          "variants": [
+            { "id": "veg", "label": "Veg", "price": 89 },
+            { "id": "spinach-cheese", "label": "Spinach Cheese", "price": 149 },
+            { "id": "chicken", "label": "Chicken", "price": 119 },
+            { "id": "mutton", "label": "Mutton", "price": 169 }
+          ],
+          "sortOrder": 1
+        },
+        {
+          "id": "kn-ko-they",
+          "category": "momos",
+          "name": "Ko-They",
+          "description": "Steamed classic momos sautéed on a bed of butter and served sizzling hot.",
+          "image": "/Images/menu-items/Momos.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": [],
+          "variants": [
+            { "id": "veg", "label": "Veg", "price": 99 },
+            { "id": "spinach-cheese", "label": "Spinach Cheese", "price": 159 },
+            { "id": "chicken", "label": "Chicken", "price": 129 },
+            { "id": "mutton", "label": "Mutton", "price": 179 }
+          ],
+          "sortOrder": 2
+        },
+        {
+          "id": "kn-fried-for-you",
+          "category": "momos",
+          "name": "Fried For You",
+          "description": "Steamed classic momos deep fried to a golden, crispy perfection.",
+          "image": "/Images/menu-items/Momos.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": [],
+          "variants": [
+            { "id": "veg", "label": "Veg", "price": 99 },
+            { "id": "spinach-cheese", "label": "Spinach Cheese", "price": 159 },
+            { "id": "chicken", "label": "Chicken", "price": 129 },
+            { "id": "mutton", "label": "Mutton", "price": 179 }
+          ],
+          "sortOrder": 3
+        },
+        {
+          "id": "kn-crunchy-kurkure",
+          "category": "momos",
+          "name": "Crunchy Kurkure",
+          "description": "Momos coated in a crunchy cornflake batter and fried till perfectly crisp.",
+          "image": "/Images/menu-items/Momos.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": [],
+          "variants": [
+            { "id": "veg", "label": "Veg", "price": 119 },
+            { "id": "spinach-cheese", "label": "Spinach Cheese", "price": 169 },
+            { "id": "chicken", "label": "Chicken", "price": 149 },
+            { "id": "mutton", "label": "Mutton", "price": 189 }
+          ],
+          "sortOrder": 4
+        },
+        {
+          "id": "kn-nepali-jhol",
+          "category": "chef_special",
+          "name": "Nepali Jhol",
+          "description": "Steamed momos served in a hot, tangy Nepali-style spicy soup.",
+          "image": "/Images/menu-items/Bobs-Special.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": true,
+          "tags": ["Chef Special"],
+          "variants": [
+            { "id": "veg", "label": "Veg", "price": 119 },
+            { "id": "spinach-cheese", "label": "Spinach Cheese", "price": 179 },
+            { "id": "chicken", "label": "Chicken", "price": 149 },
+            { "id": "mutton", "label": "Mutton", "price": 199 }
+          ],
+          "sortOrder": 5
+        },
+        {
+          "id": "kn-fiery-chilli",
+          "category": "chef_special",
+          "name": "Fiery Chilli",
+          "description": "Steamed momos tossed in a fiery chilli sauce for the ultimate spice lover.",
+          "image": "/Images/menu-items/Bobs-Special.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": true,
+          "tags": ["Chef Special", "Spicy"],
+          "variants": [
+            { "id": "veg", "label": "Veg", "price": 119 },
+            { "id": "spinach-cheese", "label": "Spinach Cheese", "price": 179 },
+            { "id": "chicken", "label": "Chicken", "price": 149 },
+            { "id": "mutton", "label": "Mutton", "price": 199 }
+          ],
+          "sortOrder": 6
+        },
+        {
+          "id": "kn-crazy-crisp",
+          "category": "chef_special",
+          "name": "Crazy Crisp",
+          "description": "Crispy fried momos coated in a bold peri-peri spiced batter.",
+          "image": "/Images/menu-items/Bobs-Special.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": true,
+          "tags": ["Chef Special"],
+          "variants": [
+            { "id": "veg", "label": "Veg", "price": 129 },
+            { "id": "spinach-cheese", "label": "Spinach Cheese", "price": 189 },
+            { "id": "chicken", "label": "Chicken", "price": 169 },
+            { "id": "mutton", "label": "Mutton", "price": 219 }
+          ],
+          "sortOrder": 7
+        },
+        {
+          "id": "kn-creme-blazed",
+          "category": "chef_special",
+          "name": "Crème Blazed",
+          "description": "Steamed momos smothered in a rich, creamy signature sauce.",
+          "image": "/Images/menu-items/Bobs-Special.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": true,
+          "tags": ["Chef Special"],
+          "variants": [
+            { "id": "veg", "label": "Veg", "price": 139 },
+            { "id": "spinach-cheese", "label": "Spinach Cheese", "price": 199 },
+            { "id": "chicken", "label": "Chicken", "price": 179 },
+            { "id": "mutton", "label": "Mutton", "price": 219 }
+          ],
+          "sortOrder": 8
+        },
+        {
+          "id": "kn-spring-roll",
+          "category": "rolls",
+          "name": "Spring Roll",
+          "description": "Crispy rolls packed with a flavourful vegetable or meat filling.",
+          "image": "/Images/menu-items/Rolls.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": [],
+          "variants": [
+            { "id": "veg", "label": "Veg", "price": 159 },
+            { "id": "chicken", "label": "Chicken", "price": 179 }
+          ],
+          "sortOrder": 9
+        },
+        {
+          "id": "kn-crunchy-roll",
+          "category": "rolls",
+          "name": "Crunchy Roll",
+          "description": "Extra crispy rolls with a crunchy, golden-fried exterior.",
+          "image": "/Images/menu-items/Rolls.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": [],
+          "variants": [
+            { "id": "veg", "label": "Veg", "price": 179 },
+            { "id": "chicken", "label": "Chicken", "price": 199 }
+          ],
+          "sortOrder": 10
+        },
+        {
+          "id": "kn-peri-peri-roll",
+          "category": "rolls",
+          "name": "Peri Peri Roll",
+          "description": "Spiced peri-peri rolls fried to a crisp, fiery finish.",
+          "image": "/Images/menu-items/Rolls.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": ["Spicy"],
+          "variants": [
+            { "id": "veg", "label": "Veg", "price": 189 },
+            { "id": "chicken", "label": "Chicken", "price": 209 }
+          ],
+          "sortOrder": 11
+        },
+        {
+          "id": "kn-bobs-thukpa",
+          "category": "thukpa",
+          "name": "Bob's Thukpa",
+          "description": "A Tibetan recipe with soft noodles, veggies, and your choice of protein in a steaming hot broth.",
+          "image": "/Images/menu-items/Thukpa.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": ["Signature"],
+          "variants": [
+            { "id": "veg", "label": "Veg", "price": 199 },
+            { "id": "chicken", "label": "Chicken", "price": 219 },
+            { "id": "mutton", "label": "Mutton", "price": 259 }
+          ],
+          "sortOrder": 12
+        },
+        {
+          "id": "kn-wai-wai-thukpa",
+          "category": "thukpa",
+          "name": "Wai Wai Thukpa",
+          "description": "Thukpa loaded with your choice of protein and topped with the famous Wai Wai noodles.",
+          "image": "/Images/menu-items/Thukpa.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": [],
+          "variants": [
+            { "id": "veg", "label": "Veg", "price": 219 },
+            { "id": "chicken", "label": "Chicken", "price": 239 },
+            { "id": "mutton", "label": "Mutton", "price": 279 }
+          ],
+          "sortOrder": 13
+        },
+        {
+          "id": "kn-momo-thukpa",
+          "category": "thukpa",
+          "name": "Momo Thukpa",
+          "description": "Juicy momos floating in a flavourful broth of soft noodles and your choice of protein.",
+          "image": "/Images/menu-items/Thukpa.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": [],
+          "variants": [
+            { "id": "veg", "label": "Veg", "price": 239 },
+            { "id": "chicken", "label": "Chicken", "price": 269 },
+            { "id": "mutton", "label": "Mutton", "price": 299 }
+          ],
+          "sortOrder": 14
+        },
+        {
+          "id": "kn-laphing",
+          "category": "laphing",
+          "name": "Laphing",
+          "description": "Traditional Tibetan cold noodle sheets tossed in spice-infused chilli oil.",
+          "image": "/Images/menu-items/Laphing.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": ["Spicy"],
+          "variants": [
+            { "id": "dry", "label": "Dry", "price": 109 },
+            { "id": "wet", "label": "Wet", "price": 129 }
+          ],
+          "sortOrder": 15
+        },
+        {
+          "id": "kn-wai-wai-laphing",
+          "category": "laphing",
+          "name": "Wai Wai Laphing",
+          "description": "Traditional Laphing stuffed with Wai Wai noodles and tossed in tangy soy sauce.",
+          "image": "/Images/menu-items/Laphing.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": [],
+          "variants": [
+            { "id": "dry", "label": "Dry", "price": 129 },
+            { "id": "wet", "label": "Wet", "price": 149 }
+          ],
+          "sortOrder": 16
+        },
+        {
+          "id": "kn-panko-crumbd-prawns",
+          "category": "snackers",
+          "name": "Panko Crumb'd Prawns",
+          "description": "Juicy prawns coated in crispy panko crumbs and fried to golden perfection.",
+          "image": "/Images/menu-items/Snackers.png",
+          "availability": true,
+          "isVeg": false,
+          "isChefSpecial": false,
+          "tags": ["New"],
+          "variants": [
+            { "id": "default", "label": "Default", "price": 399 }
+          ],
+          "sortOrder": 17
+        },
+        {
+          "id": "kn-korean-fried-wings",
+          "category": "snackers",
+          "name": "Korean Fried Wings",
+          "description": "Crispy chicken wings tossed in a sweet and spicy Korean glaze.",
+          "image": "/Images/menu-items/Snackers.png",
+          "availability": true,
+          "isVeg": false,
+          "isChefSpecial": false,
+          "tags": ["New", "Spicy"],
+          "variants": [
+            { "id": "2-pcs", "label": "2 pcs", "price": 199 },
+            { "id": "4-pcs", "label": "4 pcs", "price": 349 }
+          ],
+          "sortOrder": 18
+        },
+        {
+          "id": "kn-katsu-ramen",
+          "category": "ramen",
+          "name": "Katsu",
+          "description": "Japanese-style ramen noodles in a rich katsu curry broth.",
+          "image": "/Images/menu-items/Ramen.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": ["New"],
+          "variants": [
+            { "id": "veg", "label": "Veg", "price": 399 },
+            { "id": "chicken", "label": "Chicken", "price": 499 },
+            { "id": "mutton", "label": "Mutton", "price": 599 }
+          ],
+          "sortOrder": 19
+        },
+        {
+          "id": "kn-miso-ramen",
+          "category": "ramen",
+          "name": "Miso",
+          "description": "Ramen noodles simmered in a savoury, umami-rich miso broth.",
+          "image": "/Images/menu-items/Ramen.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": ["New"],
+          "variants": [
+            { "id": "veg", "label": "Veg", "price": 399 },
+            { "id": "chicken", "label": "Chicken", "price": 499 },
+            { "id": "mutton", "label": "Mutton", "price": 599 }
+          ],
+          "sortOrder": 20
+        },
+        {
+          "id": "kn-korean-ramen",
+          "category": "ramen",
+          "name": "Korean",
+          "description": "Ramen noodles served in a spicy, bold Korean-style broth.",
+          "image": "/Images/menu-items/Ramen.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": ["New", "Spicy"],
+          "variants": [
+            { "id": "veg", "label": "Veg", "price": 399 },
+            { "id": "chicken", "label": "Chicken", "price": 499 },
+            { "id": "mutton", "label": "Mutton", "price": 599 }
+          ],
+          "sortOrder": 21
+        },
+        {
+          "id": "kn-salmon-nigiri",
+          "category": "nigiri",
+          "name": "Salmon Nigiri",
+          "description": "Fresh salmon nigiri sushi, hand-pressed over seasoned Japanese rice.",
+          "image": "/Images/menu-items/Nigiri.png",
+          "availability": true,
+          "isVeg": false,
+          "isChefSpecial": false,
+          "tags": ["New", "Premium"],
+          "variants": [
+            { "id": "3-pcs", "label": "3 pcs", "price": 459 },
+            { "id": "6-pcs", "label": "6 pcs", "price": 799 }
+          ],
+          "sortOrder": 22
+        },
+        {
+          "id": "kn-avocado-nigiri",
+          "category": "nigiri",
+          "name": "Avocado Nigiri",
+          "description": "Creamy avocado nigiri sushi over seasoned Japanese rice.",
+          "image": "/Images/menu-items/Nigiri.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": ["New", "Premium"],
+          "variants": [
+            { "id": "3-pcs", "label": "3 pcs", "price": 399 },
+            { "id": "6-pcs", "label": "6 pcs", "price": 649 }
+          ],
+          "sortOrder": 23
+        },
+        {
+          "id": "kn-cream-cheese-asparagus-maki",
+          "category": "maki",
+          "name": "Cream Cheese Asparagus",
+          "description": "Fresh maki roll layered with creamy cheese and crisp asparagus.",
+          "image": "/Images/menu-items/Maki.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": ["New", "Premium"],
+          "variants": [
+            { "id": "4-pcs", "label": "4 pcs", "price": 349 },
+            { "id": "8-pcs", "label": "8 pcs", "price": 599 }
+          ],
+          "sortOrder": 24
+        },
+        {
+          "id": "kn-teriyaki-chicken-avocado-maki",
+          "category": "maki",
+          "name": "Teriyaki Chicken & Avocado",
+          "description": "Maki roll filled with teriyaki glazed chicken and creamy avocado.",
+          "image": "/Images/menu-items/Maki.png",
+          "availability": true,
+          "isVeg": false,
+          "isChefSpecial": false,
+          "tags": ["New", "Premium"],
+          "variants": [
+            { "id": "4-pcs", "label": "4 pcs", "price": 429 },
+            { "id": "8-pcs", "label": "8 pcs", "price": 679 }
+          ],
+          "sortOrder": 25
+        },
+        {
+          "id": "kn-chicken-teriyaki-maki",
+          "category": "maki",
+          "name": "Chicken Teriyaki",
+          "description": "Fresh sushi roll layered with teriyaki glazed chicken and premium Japanese rice.",
+          "image": "/Images/menu-items/Maki.png",
+          "availability": true,
+          "isVeg": false,
+          "isChefSpecial": false,
+          "tags": ["New", "Premium"],
+          "variants": [
+            { "id": "4-pcs", "label": "4 pcs", "price": 349 },
+            { "id": "8-pcs", "label": "8 pcs", "price": 599 }
+          ],
+          "sortOrder": 26
+        },
+        {
+          "id": "kn-spicy-shrimp-roll-maki",
+          "category": "maki",
+          "name": "Spicy Shrimp Roll",
+          "description": "Maki roll filled with spicy shrimp for a bold, fiery bite.",
+          "image": "/Images/menu-items/Maki.png",
+          "availability": true,
+          "isVeg": false,
+          "isChefSpecial": false,
+          "tags": ["New", "Premium", "Spicy"],
+          "variants": [
+            { "id": "4-pcs", "label": "4 pcs", "price": 409 },
+            { "id": "8-pcs", "label": "8 pcs", "price": 799 }
+          ],
+          "sortOrder": 27
+        },
+        {
+          "id": "kn-lavender-vanilla-luma",
+          "category": "mocktail",
+          "name": "Lavender Vanilla Luma",
+          "description": "Refreshing handcrafted mocktail with fragrant lavender and smooth vanilla notes.",
+          "image": "/Images/menu-items/Mocktail.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": ["Premium"],
+          "variants": [
+            { "id": "default", "label": "Default", "price": 249 }
+          ],
+          "sortOrder": 28
+        },
+        {
+          "id": "kn-cocolime-slurrp",
+          "category": "mocktail",
+          "name": "Cocolime Slurrp",
+          "description": "Refreshing handcrafted mocktail blending coconut and zesty lime flavours.",
+          "image": "/Images/menu-items/Mocktail.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": ["Premium"],
+          "variants": [
+            { "id": "default", "label": "Default", "price": 219 }
+          ],
+          "sortOrder": 29
+        },
+        {
+          "id": "kn-vietnam-cooler",
+          "category": "mocktail",
+          "name": "Vietnam Cooler",
+          "description": "Refreshing handcrafted mocktail inspired by classic Vietnamese flavours.",
+          "image": "/Images/menu-items/Mocktail.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": ["Premium"],
+          "variants": [
+            { "id": "default", "label": "Default", "price": 219 }
+          ],
+          "sortOrder": 30
+        },
+        {
+          "id": "kn-sakura-littz",
+          "category": "mocktail",
+          "name": "Sakura Littz",
+          "description": "Refreshing handcrafted mocktail with delicate cherry blossom-inspired notes.",
+          "image": "/Images/menu-items/Mocktail.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": ["Premium"],
+          "variants": [
+            { "id": "default", "label": "Default", "price": 219 }
+          ],
+          "sortOrder": 31
+        },
+        {
+          "id": "kn-lemongrass-mojito",
+          "category": "mocktail",
+          "name": "Lemongrass Mojito",
+          "description": "Refreshing handcrafted mocktail with zesty lemongrass and mint.",
+          "image": "/Images/menu-items/Mocktail.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": ["Premium"],
+          "variants": [
+            { "id": "default", "label": "Default", "price": 219 }
+          ],
+          "sortOrder": 32
+        },
+        {
+          "id": "kn-hibiscus-fizz",
+          "category": "mocktail",
+          "name": "Hibiscus Fizz",
+          "description": "Refreshing handcrafted mocktail with vibrant hibiscus and a fizzy finish.",
+          "image": "/Images/menu-items/Mocktail.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": ["Premium"],
+          "variants": [
+            { "id": "default", "label": "Default", "price": 219 }
+          ],
+          "sortOrder": 33
+        },
+        {
+          "id": "kn-fuji-yuzu",
+          "category": "yuzu",
+          "name": "Fuji Yuzu",
+          "description": "Refreshing handcrafted beverage featuring the citrusy zest of Japanese yuzu.",
+          "image": "/Images/menu-items/Yuzu.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": ["Premium"],
+          "variants": [
+            { "id": "default", "label": "Default", "price": 219 }
+          ],
+          "sortOrder": 34
+        },
+        {
+          "id": "kn-yuzu-iced-tea",
+          "category": "yuzu",
+          "name": "Yuzu Iced Tea",
+          "description": "Chilled iced tea infused with the vibrant citrus flavour of yuzu.",
+          "image": "/Images/menu-items/Yuzu.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": ["Premium"],
+          "variants": [
+            { "id": "default", "label": "Default", "price": 219 }
+          ],
+          "sortOrder": 35
+        },
+        {
+          "id": "kn-yuzu-sparkler",
+          "category": "yuzu",
+          "name": "Yuzu Sparkler",
+          "description": "A sparkling refresher bursting with vibrant yuzu citrus flavour.",
+          "image": "/Images/menu-items/Yuzu.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": ["Premium"],
+          "variants": [
+            { "id": "default", "label": "Default", "price": 219 }
+          ],
+          "sortOrder": 36
+        },
+        {
+          "id": "kn-coca-cola",
+          "category": "soft_drinks",
+          "name": "Coca Cola (350ml)",
+          "description": "Classic carbonated cola drink, served chilled.",
+          "image": "/Images/menu-items/SoftDrinks.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": [],
+          "variants": [
+            { "id": "default", "label": "Default", "price": 50 }
+          ],
+          "sortOrder": 37
+        },
+        {
+          "id": "kn-thumbs-up",
+          "category": "soft_drinks",
+          "name": "Thumbs Up (350ml)",
+          "description": "Strong, bold carbonated cola drink, served chilled.",
+          "image": "/Images/menu-items/SoftDrinks.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": [],
+          "variants": [
+            { "id": "default", "label": "Default", "price": 50 }
+          ],
+          "sortOrder": 38
+        },
+        {
+          "id": "kn-sprite",
+          "category": "soft_drinks",
+          "name": "Sprite (350ml)",
+          "description": "Refreshing lemon-lime carbonated drink, served chilled.",
+          "image": "/Images/menu-items/SoftDrinks.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": [],
+          "variants": [
+            { "id": "default", "label": "Default", "price": 50 }
+          ],
+          "sortOrder": 39
+        },
+        {
+          "id": "kn-coke-zero",
+          "category": "soft_drinks",
+          "name": "Coke Zero (330ml)",
+          "description": "Zero sugar, full-taste carbonated cola.",
+          "image": "/Images/menu-items/SoftDrinks.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": [],
+          "variants": [
+            { "id": "default", "label": "Default", "price": 70 }
+          ],
+          "sortOrder": 40
+        },
+        {
+          "id": "kn-peach-passion",
+          "category": "ice_tea",
+          "name": "Peach Passion",
+          "description": "Refreshing iced tea blended with peach and passion fruit flavours.",
+          "image": "/Images/menu-items/IceTea.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": [],
+          "variants": [
+            { "id": "default", "label": "Default", "price": 159 }
+          ],
+          "sortOrder": 41
+        },
+        {
+          "id": "kn-watermelon",
+          "category": "ice_tea",
+          "name": "Watermelon",
+          "description": "Refreshing iced tea with natural watermelon flavour.",
+          "image": "/Images/menu-items/IceTea.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": [],
+          "variants": [
+            { "id": "default", "label": "Default", "price": 159 }
+          ],
+          "sortOrder": 42
+        },
+        {
+          "id": "kn-lemon-ice-tea",
+          "category": "ice_tea",
+          "name": "Lemon",
+          "description": "Classic iced tea with a zesty lemon flavour.",
+          "image": "/Images/menu-items/IceTea.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": [],
+          "variants": [
+            { "id": "default", "label": "Default", "price": 159 }
+          ],
+          "sortOrder": 43
+        },
+        {
+          "id": "kn-addon-veggies",
+          "category": "addons",
+          "name": "Veggies",
+          "description": "Extra veggie filling add-on for momos, thukpa, or laphing.",
+          "image": "/Images/menu-items/Addons.png",
+          "availability": true,
+          "isVeg": true,
+          "isChefSpecial": false,
+          "tags": [],
+          "variants": [
+            { "id": "default", "label": "Default", "price": 60 }
+          ],
+          "sortOrder": 44
+        },
+        {
+          "id": "kn-addon-chicken",
+          "category": "addons",
+          "name": "Chicken",
+          "description": "Extra chicken filling add-on for momos, thukpa, or laphing.",
+          "image": "/Images/menu-items/Addons.png",
+          "availability": true,
+          "isVeg": false,
+          "isChefSpecial": false,
+          "tags": [],
+          "variants": [
+            { "id": "default", "label": "Default", "price": 80 }
+          ],
+          "sortOrder": 45
+        },
+        {
+          "id": "kn-addon-mutton",
+          "category": "addons",
+          "name": "Mutton",
+          "description": "Extra mutton filling add-on for momos, thukpa, or laphing.",
+          "image": "/Images/menu-items/Addons.png",
+          "availability": true,
+          "isVeg": false,
+          "isChefSpecial": false,
+          "tags": [],
+          "variants": [
+            { "id": "default", "label": "Default", "price": 100 }
+          ],
+          "sortOrder": 46
+        }
+      ]
     }
   ]
 }
